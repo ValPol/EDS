@@ -6,7 +6,7 @@ Feature: Log in feature
     Given I have opened EDS application log in page
 
     When  I enter credentials
-      | Login         | Password |
+      | login         | password |
       | user@user.com | password |
 
     Then I successfully log in

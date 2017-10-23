@@ -1,8 +1,9 @@
 package PageObjects.LogIn;
 
 import DTO.LogInDTO;
+
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.FindBy;
 
 /**
@@ -16,7 +17,7 @@ public class LogInPage {
     @FindBy( id="Password")
     public SelenideElement userPassword;
 
-    @FindBy (id ="RememberMe")
+    @FindBy (xpath ="//*[@id='RememberMe' and @type='checkbox']")
     public SelenideElement rememberMe;
 
     @FindBy (xpath = "//*[@class='btn single-btn']")
@@ -26,9 +27,9 @@ public class LogInPage {
 
     public void setLogin (LogInDTO dto){
 
-        userLogin.setValue(dto.Login);
-        userPassword.setValue(dto.Password);
-        rememberMe.click();
+        userLogin.setValue(dto.login);
+        userPassword.setValue(dto.password);
+       // rememberMe.click();
         entr.pressEnter();
     }
 

@@ -14,13 +14,13 @@ import static com.codeborne.selenide.Selenide.open;
 public class LogIn {
 
     LogInPage page;
-    LogInDTO dto;
 
     @Before
     public void BeforeAll () throws Exception {
         Common.Configuration config = new Common.Configuration();
         config.SetDrivers();
     }
+    
     @Given("^I have opened EDS application log in page$")
     public void iHaveOpenedEDSApplicationLogInPage() throws Throwable {
         page = open("https://eds-pro-trunk.fintender.ru/Account/SignIn?ReturnUrl=%2FReport", LogInPage.class);

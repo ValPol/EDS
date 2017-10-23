@@ -1,26 +1,31 @@
 package PageObjects.MainLayout;
 
-import com.codeborne.selenide.Configuration;
+import PageObjects.Reports.GridReportFNS;
 import com.codeborne.selenide.SelenideElement;
-import com.google.common.base.Function;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 /*
 * Верхнее меню
 * */
 public class TopMenuPage {
 
+    @FindBy( xpath ="//*[@class='edo edo-menu-dots']")
+    public SelenideElement userAccountBtm;
 
+    @FindBy( xpath ="//*[@class='username']")
+    public SelenideElement userName;
+
+    GridReportFNS grid;
+    public void goToPersonalArea() throws InterruptedException {
+
+        //grid.gridHeader.shouldBe(visible);
+        Thread.sleep(1000);
+        userAccountBtm.click();
+        userName.click();
+
+    }
 
     }
 
