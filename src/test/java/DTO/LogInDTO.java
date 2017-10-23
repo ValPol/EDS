@@ -8,10 +8,10 @@ public class LogInDTO {
     /*
     * Логин
     * */
-    public String Login="user@user.com";
+    public String Login;
 
     /*
     * Пароль
     * */
-    public String Password = "password";
+    public String Password;
 }
