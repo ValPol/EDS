@@ -9,6 +9,10 @@ import org.openqa.selenium.support.FindBy;
  */
 public class OperateOrganizationPage extends MainLayoutPage {
 
+    /*
+    * Страница редактирования/добавления организации
+    * */
+
     @FindBy( xpath ="//*[@data-bind='text: selectButtonName, click: selectCertificate']")
     public SelenideElement loadCertificate;
 
@@ -24,7 +28,31 @@ public class OperateOrganizationPage extends MainLayoutPage {
     @FindBy (xpath ="//*[@class='anim-placeholder btn']")
     public SelenideElement addBankDetailsButtom;
 
+    @FindBy (id = "addFtExchangeChbx")
+    public SelenideElement exchangeDocumentMainChB;
+
+    @FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process error']")
+    public SelenideElement fnsCodeExchangeDocText;
+
+    @FindBy (id = "ftExchangePikChbx")
+    public SelenideElement getExchangeDocumentPIKChB;
+
+    @FindBy (id = "fnsChbx")
+    public SelenideElement fnsChBx;
+
+    @FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process']")
     
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*
