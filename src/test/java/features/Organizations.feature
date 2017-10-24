@@ -12,6 +12,6 @@ Feature: Organizations feature
     When I have choose Private area
 
     When I have choose Organization Tub
-    
+
 
     Then I successfully reach it

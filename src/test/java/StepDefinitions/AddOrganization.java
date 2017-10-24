@@ -50,6 +50,7 @@ public class AddOrganization  {
     public void iHaveChooseOrganizationTub() throws Throwable {
         userPage = page(PrivateArea.class);
         userPage.clickOrganizationTub();
+        userPage.clickOrganizationAdd();
     }
 
 
