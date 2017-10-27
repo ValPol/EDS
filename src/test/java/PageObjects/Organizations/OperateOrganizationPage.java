@@ -40,7 +40,7 @@ public class OperateOrganizationPage extends MainLayoutPage {
     @FindBy (id = "fnsChbx")
     public SelenideElement fnsChBx;
 
-    @FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process']")
+    //@FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process']")
     
 
 
