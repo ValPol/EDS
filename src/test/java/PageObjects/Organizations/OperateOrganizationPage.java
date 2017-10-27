@@ -1,8 +1,18 @@
 package PageObjects.Organizations;
 
 import PageObjects.MainLayout.MainLayoutPage;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static com.codeborne.selenide.Selenide.$;
 
 /**
  * Страница действий с организацией
@@ -41,18 +51,6 @@ public class OperateOrganizationPage extends MainLayoutPage {
     public SelenideElement fnsChBx;
 
     //@FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process']")
-    
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -61,8 +59,21 @@ public class OperateOrganizationPage extends MainLayoutPage {
     @FindBy( xpath ="//*[@class='btn plain cancelModalWindow']")
     public SelenideElement cancelButtom;
 
+    @FindBy (id = "selectSignin")
+    public SelenideElement chooseCertificate;
 
 
+    public void chooseCertificate(WebDriver driver) throws InterruptedException {
+        //Configuration config = new Configuration();
+        loadCertificate.click();
+        Thread.sleep(1000);
+       $(By.xpath("//*[text()='Филатов Сергей Вадимович']")).click();
+       chooseCertificate.click();
+       Thread.sleep(1000);
+        Actions builder = new Actions(driver);
+        builder.sendKeys(Keys.RIGHT).perform();
+        builder.sendKeys(Keys.ENTER).perform();
+    }
 
 
 }

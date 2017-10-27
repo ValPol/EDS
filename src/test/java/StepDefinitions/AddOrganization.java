@@ -5,6 +5,7 @@ import PageObjects.LogIn.LogInPage;
 
 import PageObjects.MainLayout.TopMenuPage;
 
+import PageObjects.Organizations.OperateOrganizationPage;
 import PageObjects.UserPrivateArea.PrivateArea;
 import cucumber.api.DataTable;
 
@@ -12,6 +13,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
@@ -21,12 +23,14 @@ public class AddOrganization  {
     LogInPage page;
     TopMenuPage topMenu;//=page(TopMenuPage.class);
     PrivateArea userPage;
+    OperateOrganizationPage addOrganization;
+    WebDriver driver;
 
 
     @Before
     public void BeforeAll () throws Exception {
         Common.Configuration config = new Common.Configuration();
-        config.SetDrivers();
+        driver = config.SetDrivers();
     }
 
     @Given("^I have opened EDS$")
@@ -51,6 +55,12 @@ public class AddOrganization  {
         userPage = page(PrivateArea.class);
         userPage.clickOrganizationTub();
         userPage.clickOrganizationAdd();
+    }
+
+    @When("^I have choose Certificate$")
+    public void iHaveChooseCertificate() throws Throwable {
+        addOrganization = page(OperateOrganizationPage.class);
+        addOrganization.chooseCertificate(driver);
     }
 
 

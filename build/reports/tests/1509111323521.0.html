@@ -1,0 +1,1946 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" class="k-webkit k-webkit61"><head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Добавление организации</title>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon_second_type.ico" />
+    <link href="/Content/css?v=0aeOBSnBzuIIQszMMSaGFZIRKlpOo4tU2VOW2xS8_OM1" rel="stylesheet" />
+
+    <script src="/bundles/libraries?v=x5JMDVL2fpqJ0lBQ7gwxLjdw_91B4dGQfcyM9i9xCHY1"></script>
+
+    <script src="/bundles/scriptsformainlayout?v=UMPReHMBRu2rIS4AMvtnvWuzSvFV0hsNsCI8at58Yyw1"></script>
+
+    
+<script src="/bundles/signalR?v=IwJI70Yvn8Jw4eT3LkYxlCiTN_dgppHjJmz4tRrGO-I1"></script>
+
+
+<script src="/signalr/hubs"></script> 
+
+
+<script type="text/javascript">
+        
+    // добавляем ко всем запросам со страницы
+    $.ajaxPrefilter(function (options) {
+        if (options.url.indexOf('https://suggestions.dadata.ru/') === 0) {
+            return;
+        }
+        if (!options.beforeSend) {
+            options.beforeSend = function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer wpFBQG0PrYPiKIPUu5ZXpdDU-b-02QIgPzHrpNNIQ_gcIVb-vM42i8-E8ZCk27v9CUuv-934K7vO-_u9wcH4vsjqKbcY85K4UC7B6EJUCwREeOeyAV6nw4rrMf38cbGxw10D1ac4pd2Z04vzaCbfzFOlxk_-yX4HQSyuY7LKuKVHVM62f_FmiKKg5d2V_x3Vl6iA2J1xBv0rpve9XWSBKWP9w1AYi9HcoGuP9IOfrr8aR7KB5X_85yuXPEPt4njNOVpDMsCR3V6s60TPalSdHrePPY0MD1n8pQhJeONB9PIiqwJrXpcH2xIQ7mPy0CkJZf50EJJ2IRdhxiJKKnaWgLWvljoiZXP9OTt4zPoM-HPCw4n-vzX-vj1IxCh1JAApapUGggbAJ9UXNfA77pR9daTaLH3tmfftixpTIvN2x8W3DrgX9ZOYuT0IM4o4bBzYHg_cGB82rGCcFd2z44XpEIF9fx1D1tlTnbZQ3Kxfc-eebC_AD3cfDqoX5SVvSikrilEWO8a8gtgfqeCPi1DMj5d_1ZNKEI7c7ZVsgRWh8_k');
+            }
+        }
+    });
+    window.userToken = 'wpFBQG0PrYPiKIPUu5ZXpdDU-b-02QIgPzHrpNNIQ_gcIVb-vM42i8-E8ZCk27v9CUuv-934K7vO-_u9wcH4vsjqKbcY85K4UC7B6EJUCwREeOeyAV6nw4rrMf38cbGxw10D1ac4pd2Z04vzaCbfzFOlxk_-yX4HQSyuY7LKuKVHVM62f_FmiKKg5d2V_x3Vl6iA2J1xBv0rpve9XWSBKWP9w1AYi9HcoGuP9IOfrr8aR7KB5X_85yuXPEPt4njNOVpDMsCR3V6s60TPalSdHrePPY0MD1n8pQhJeONB9PIiqwJrXpcH2xIQ7mPy0CkJZf50EJJ2IRdhxiJKKnaWgLWvljoiZXP9OTt4zPoM-HPCw4n-vzX-vj1IxCh1JAApapUGggbAJ9UXNfA77pR9daTaLH3tmfftixpTIvN2x8W3DrgX9ZOYuT0IM4o4bBzYHg_cGB82rGCcFd2z44XpEIF9fx1D1tlTnbZQ3Kxfc-eebC_AD3cfDqoX5SVvSikrilEWO8a8gtgfqeCPi1DMj5d_1ZNKEI7c7ZVsgRWh8_k';
+    
+    window.allow_firefox_cadesplugin_async=1;// для работы КриптоПро плагина
+    //глобальный объект, хранящий ресурсы
+    window.resourceObject = {
+
+        //значения перечислений
+        enumValues:
+        {
+            organizationStateActive: 10,
+            organizationStateArchived: 20,
+            organizationStateNew: 0,
+
+            organizationRequestStateApproved: 30,
+            organizationRequestStateCanceled: 20,
+            organizationRequestStateSentToOperatorForApproval: 0,
+
+            organizationRequestTypeArchive: 2,
+            organizationRequestTypeCreate: 0,
+            organizationRequestTypeEdit:1,
+            organizationRequestTypeRestore:3,
+
+            organizationRequestStateProcessingByFns: 1,
+            organizationRequestStateProcessingByIrud: 10,
+            organizationRequestStateProcessingByPfr: 2,
+            organizationRequestStateProcessingByFss: 4,
+
+            departmentRequestStatusNotSend: 0,
+            departmentRequestStatusInProgress: 10,
+            departmentRequestStatusError: 20,
+            departmentRequestStatusDone: 30,
+            departmentRequestStatusCompletedByOperator: 40,
+
+            reportStateUnknown: '0',
+            reportStateDraft: '5',
+            reportStateLoadedToApplication: '15',
+            reportStateReportForValidationReceived: '20',
+            reportStateReportSuccessfullyValidated: '25',
+            reportStateValidationFailed: '30',
+            reportStateSavingAdditionalReportInformation: '35',
+            reportStateDataForServicedOrganizationNotEqualsToDataFromReportAndOrgExists: '40',
+            servicedOrganizationdDoesntContainFnsCode: '46',
+            reportStateInnForServicedOrganizationNotEqualsToInnFromReportAndOrgDoesNotExist: '45',
+            reportStateReportForSendReceived: '55',
+            reportStateReportSuccessfullySent: '60',
+            reportStateReportIsPartiallyAccepted: '70',
+            reportStateReportIsCompletelyAccepted: '75',
+            reportStateReportIsAcceptedByInstitution: '80',
+            reportStateSendingFailed: '65',
+            reportStateReportIsRejectedByDepartment: '66',
+            reportStateReportIsNotAcceptedByInstitution: '85',
+            reportStateReportIsSuccessfullyCheckedByInstitution: '95',
+            reportStateReportIsUnsuccessfullyCheckedByInstitution: '100',
+            reportStateReportIsParticallyAndCompletelyAcceptedAndAcceptedByInstitution: '90',
+            reportStatefssRegCodeIsNotFound: '220',
+            reportStateRosstatRegCodeIsNotFound: '225',
+            InspectionReceiptIsReceivedState: '105',
+            ErrorIsReceivedState: '110',
+            VerificationProtocolWithPositiveResultIsReceivedState: '115',
+            VerificationProtocolWithNegativeResultIsReceivedState: '120',
+            ProtocolReceiptIsSentState: '125',
+            documentStateIsSendedConfirmationByUser: '280',
+            documentStateIsSendedRejectedByUser: '285',
+            documentStateIncomingReport: '270',
+            documentStateReportReceiptNotificationIsSent: '275',
+            documentStateAcceptanceNotificationIsSent: '280',
+            documentStateRejectionNotificationIsSent: '285',
+            documentStateReceiptNotificationIsReceived: '290',
+            documentWorkflowEnded: '325',
+            documentAgreementRejected: '330',
+            documentWorkflowUserBlocked: '335',
+
+            errorStateInnForServicedOrganizationNotEqualsToInnFromCertificate: '5',
+            errorStateSignerNamesForReportNotEqualsToSignerNamesFromCertificate: '10',
+            errorStateIndividualEntrepreneurNamesForReportNotEqualsToSignerNamesFromCertificate: '15',
+            errorStatePowerOfAttorneyAddedAndNotSigned: '20',
+            errorStateNoMoneyOnAnalyticAccount: '25',
+
+            reportStateForOperatorErrorDuringReceive: '15',
+            reportStateForOperatorErrorDuringSend: '10',
+            reportStateForOperatorAdjustmentIsRequired: '20',
+            reportStateForOperatorReceivedByDepartment: '5',
+            reportStateForOperatorSent: '31',
+            reportStateForOperatorUnsent: '30',
+            reportStateForOperatorInProgress: '2',
+
+            reportShortStateForm: '5',
+            reportShortStateReadyToSent: '65',
+            reportShortStateSending: '10',
+            reportShortStateSent: '15',
+            reportShortStateAccepted: '20',
+            reportShortStateCheckedByInstitution: '25',
+            reportShortStateNotCheckedByInstitution: '30',
+            reportShortStateAdjustmentIsRequired: '35',
+            reportShortStateReportReceiptNotificationIsSent: '60',
+
+            factoringIsCreditorDraft:'1',
+            factoringIsSignAndSent:'3',
+            factoringIsSignByDebtor:'5',
+            factoringIsSignByFactor:'15',
+            factoringIsClosed:'45',
+            FactoringConditionSupplyContractStateActual:'1',
+            FactoringConditionSupplyContractStateIrrelevant:'0',
+
+            SmtpPop3: '1',
+            SmtpPop3Description: 'SMTP/POP3',
+            WcfService: '2',
+            WcfServiceDescription: 'WCF',
+
+            exchangeSendInitialDocument: '1',
+            exchangeSendDeliveryNotification: '2',
+            exchangeSendCorrectionRequirement: '3',
+            exchangeSendBuyerInformation: '4',
+            exchangeSendCorrectionRequirementReceiveNotification: '5',
+
+            transportErrorStateSuccess: 15,
+            transportErrorStateRetrying: 5,
+            transportErrorStateFail: 10,
+
+            licenseDocumentTypeExchange: 1,
+            licenseDocumentTypeLimitedExchange: 2,
+            licenseDocumentTypeReporting: 3
+        },
+
+        certificateCheckResultStrategyTypes: {
+            addNewOrganization: '0',
+            assignUserToOrganization:'5',
+            showRejectionMessage: '10',
+            addNewOrganizationAsBigTaxPayer: '15',
+            askLegalPersonClient: '20'
+        },
+
+        departmentTypes: {
+            fns: '1',
+            fnsName: 'ФНС',
+            pfr: '2',
+            pfrName: 'ПФР',
+            rosstat: '3',
+            rosstatName: 'Росстат',
+            fss: '4',
+            fssName: 'ФСС',
+            exchange: '15',
+            exchangeName: 'ЭДО-Обмен',
+            irud: '10',
+            irudName: 'ИРУД',
+            factoring: '20',
+            factoringName: 'Факторинг'
+        },
+
+        presentationTypes: {
+            documents: '1',
+            registration:'3',
+            ndsExplanation: '2'
+        },
+
+        LifeCycleStateTypeEnum: {
+            Success: '1',
+            SuccessName: 'Success',
+            InProgress: '5',
+            InProgressName: 'InProgress',
+            Error: '10',
+            ErrorName: 'Error'
+        },
+
+        DocumentFlowsForExchangeCardEnum: {
+            EmptyName: 'Не выбрано',
+            DocumentExchange_01: 'DocumentExchange_01',
+            DocumentExchange_01Name: 'Запросить',
+            DocumentExchange_03: 'DocumentExchange_03',
+            DocumentExchange_03Name: 'Не нужно',
+            DocumentExchange_04: 'DocumentExchange_04',
+            DocumentExchange_04Name: 'Не направлять контрагенту(самоподпись)',
+            DocumentExchange_05: 'DocumentExchange_05',
+            DocumentExchange_05Name: 'Многостороннее подписание'
+        },
+
+        DocumentFlowCodesEnum: {
+            FnsDemand: '10',
+            FnsPresentation: '12',
+            FnsInbox: '03',
+            FnsMail: '04',
+            FnsGroupMail: '05'
+        },
+
+        approveDeal: {
+            Need: 1,
+            NotNeed: 2
+            },
+
+        ExchangeDocumentFilterStateEnum: {
+            Incoming: '1',
+            Outgoing: '2',
+            SelfSignature: '3',
+            Deleted: '4',
+            Draft: '5',
+            AgreementIncoming: '7',
+            AgreementOutgoing: '8'
+        },
+
+        ExchangeDocumentStateForOperatorEnum: {
+            Sended: '0',
+            Delivered: '1',
+            SentResponse: '2',
+            Error: '3'
+        },
+
+        organizationTabs: {
+            all:        {id: 0,      name: 'Все'},
+            active:     {id: 1,   name: 'Актуальные'},
+            archived:   {id: 2, name: 'Архив/Неактивные'},
+            externalOrganizations: {id: 3, name: 'Организации других операторов'}
+        },
+
+        UiStateIconTypeEnum: {
+            Green: '2',
+            Yellow: '1',
+            StopCircleO: '3',
+            CheckCircleO: '4',
+            ClockO: '5',
+            Bolt: '6'
+        },
+
+        IonRequestTypeEnum: {
+            CertificateStatusPayments: 'Справка о состоянии расчетов по налогам, сборам, страховым взносам, пеням, штрафам, процентам',
+            StatementOperationsSettlementsWithBudget: 'Выписка операций по расчетам с бюджетом',
+            ListTaxDeclarations: 'Перечень налоговых деклараций (расчетов) и бухгалтерской отчетности',
+            ActJoinVerificationCalculationsTaxes: 'Акт совместной сверки расчетов по налогам, сборам, страховым взносам, пеням, штрафам, процентам',
+            CertificateOnExecutionByTaxpayer: 'Справка об исполнении налогоплательщиком (плательщиком сбора, плательщиком страховых взносов, налоговым агентом) обязанности по уплате налогов, сборов, страховых взносов, пеней, штрафов, процентов'
+        },
+
+        ActsFilterStateEnum: {
+            actShortStateDraft: '5',
+            actShortStateSigned: '25',
+            actShortStateRejected: '35'
+        },
+
+        //Тип контента для подписи
+        contentTypeForSign: {
+            Base64: 1,//массив байт
+            Hash: 2,//Хеш
+            String: 3//Строка
+        },
+
+        //Тип вводимой даты
+        inputDateType: {
+            DateType: "1",//Установка даты
+            OffsetDayType: "2",//Смещение в календарных днях
+            OffsetWorkingDayType: "3"//Смещение в роабочих днях
+        },
+
+        //Тип кнопки просмотра комментариев
+        commentButtonType: {
+            EmptyName: 'Комментариев нет',
+            Empty: 0,//Комментариев нет
+            AddName: 'Добавить',
+            Add: 10, //Добавить
+            ViewAndAddName: 'Просмотреть и добавить',
+            ViewAndAdd: 20, //Просмотреть и добавить
+            ViewName: 'Просмотреть',
+            View: 30 //Просмотреть
+            },
+
+        localization: {
+        },
+
+        //адреса
+        urls: {
+            webApiLogout: 'https://eds-pro-webapi-trunk.fintender.ru/api/account/logout',
+            webApiLoadReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/Load',
+            webApiGetAllReportsForFns: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFns',
+            webApiGetAllReportsForFnsIon: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFnsIon',
+            webApiGetAllForFnsDemands: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFnsDemands',
+            webApiGetAllForFnsPresentations: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFnsPresentations',
+            webApiGetAllForFnsIncoming: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFnsIncoming',
+            webApiGetAllReportsForFnsBankGuarantees: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFnsBankGuarantees',
+            webApiGetAllForFnsOutboxs: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFnsOutboxs',
+            webApiGetAllReportsForPfr: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForPfr',
+            webApiGetAllReportsForFss: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForFss',
+            webApiGetAllReportsForRosstat: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForRosstat',
+            webApiGetAllReportsForExchange: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetAll',
+            webApiGetAgreementDocuments: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetAgreementDocuments',
+            webApiSignAndSendReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/SignAndSend',
+            webApiSignAndSendExchangeDocument: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/SignAndSend',
+            webApiSignSendDateConfirmation: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/SignSendDateConfirmation',
+            webApiValidateReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/Validate',
+            webApiGetDataToSignReportForSend: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetDataToSignReportForSend',
+            webApiGetDataToSignDocumentForSend: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetDataToSignDocumentForSend',
+            webApiDeleteReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid',
+            webApiDeleteExchangeDocument: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId',
+            webApiDeleteDocumentFile: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/DeleteDocumentFile',
+            webApiEditReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/EditReport',
+            webApiGetHistory: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetHistory',
+            webApiGetHistoryForOperator: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetHistoryForOperator',
+            webApiGetReportFlowHistory: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetReportFlowHistory',
+            webApiGetDocumentFlowHistory: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentid/GetReportFlowHistory',
+            webApiGetDocumentFlowHistoryForOrganzation: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId/GetDocumentFlowHistoryForOrganzation/organizationId',
+            webApiGetExchangeDocumentType: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentid/GetExchangeDocumentType',
+            webApiGetOrganizationDocumentSignatureInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/DocumentSignatureInfo',
+            webApiChangeServicedOrganizationForReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/ChangeServicedOrganization',
+            webApiGetReportTitle: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetTitle',
+            webApiGetDocumentTitle: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentid/GetTitle',
+            webApiRegisterUser: 'https://eds-pro-webapi-trunk.fintender.ru/api/account/register',
+            webApiChangePassword: 'https://eds-pro-webapi-trunk.fintender.ru/api/account/changepassword',
+            webApiSavePersonalInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/account/SavePersonalInfo',
+            webApiGetUserServicedOrganizations: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAllForUser',
+            webApiGetAllOrganizationNamesForExchange: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAllOrganizationNamesForExchange',
+            webApiGetAllOrganizationNames: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAllOrganizationNames',
+            webApiAddOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/Add',
+            webApiAddUserToOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/Add',
+            webApiApproveOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/Approve',
+            webApiDeclineOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/Decline',
+            webApiArchiveOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/Archive',
+            webApiDeleteOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/organizationVersionId/Delete',
+            webApiEditOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/Edit',
+            webApiSaveIrudId: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/SaveIrudId',
+            webApiRestoreOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/id/Restore',
+            webApiGetRequestsForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetRequestsForOperator',
+            WebApiGetUnviewedReportStatusCountUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetUnviewedReportStatusCount',
+            webApiGetUnreadRequestsCountUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Notification/GetOperatorUnreadCount',
+            webApiGetOrganizationListForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetOrganizationListForOperator',
+            WebApiGetUserListForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/User/GetUserListForOperator',
+            webApiGetAllReportsForOperator:  'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAllForOperator',
+            webApiGetFnsMailForOperator:  'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetFnsMailForOperator',
+            webApiGetAllFormatsForOperator:  'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/GetAllDocumentFormats',
+            webApiGetAllDepartmentSettingsForOperator:  'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetAll',
+            webApiGetDepartmentErrorStatesUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetDepartmentErrorStates',
+            webApiGetReceivingErrorsUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetReceivingErrors',
+            webApiGetSendingErrorsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetSendingErrors',
+            webApiAddDocumentFormatVersionUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/Add',
+            webApiEditDocumentFormatVersionUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/DocumentFormatId/Edit',
+            webApiAddDepartmentSettingUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/Add',
+            webApiEditDepartmentSettingUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/Id/Edit',
+            webApiGetAllDocumentFlowsUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/departmentId/GetAllDocumentFlows',
+            WebApiGetAllWithAbilityToAddAdditionalDocumentsUrl:  'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/departmentId/GetAllWithAbilityToAddAdditionalDocuments',
+            webApiGetAllNotificationsForUser: 'https://eds-pro-webapi-trunk.fintender.ru/api/Notification/GetAllNotificationsForUser',
+            webApiGetUnreadNotificationsCountForUser: 'https://eds-pro-webapi-trunk.fintender.ru/api/Notification/GetUnreadNotificationsCount',
+            webApiMakeNotificationReaded: 'https://eds-pro-webapi-trunk.fintender.ru/api/Notification/id/MakeReaded',
+            webApiGetOkopfListUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetDictionaryOkopf',
+            webApiGetDictionaryKbkUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetDictionaryKbk',
+            webApiMakeAllNotificationsReaded: 'https://eds-pro-webapi-trunk.fintender.ru/api/Notification/MakeAllReaded',
+            webApiGetAllOkopfByParentCodeUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetAllOkopfByParentCode',
+            webApiGetServicedOrganizationEvents: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/Events',
+            webApiGetOrganizationUsersUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/Users',
+            webApiChangeOrganizationUserStateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/ChangeState',
+            webApiGetUserCertificatesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/Certificates',
+            webApiGetUserRolesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/userInOrganizationId/Roles',
+            webApiUpdateUserRolesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/UpdateRoles',
+            webApiGetAvailableRolesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/AvailableRoles',
+            webApiGetRegistrationRequestsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/RegistrationRequests',
+            webApiSendUpdateRequestUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/organizationId/SendUpdateRequest',
+            webApiDeleteUserCertificateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/DeleteCertificate/userCertificateId',
+            webApiAddUserCertificateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/AddCertificate',
+            webApiChangeCertificateStateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/ChangeCertificateState',
+            webApiSetViewedReportStatus: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/id/SetViewedReportStatus',
+            webApiSetViewedDocumentStatus: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentid/organizationId/SetViewedStatus',
+            webApiGetUserActiveServicedOrganizationsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetActiveForUser',
+            webApiFindOrganizationDuplicates: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/FindOrganizationDuplicates',
+            webApiSerializePowerOfAttorneyUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/SerializePowerOfAttorney',
+            webApiSerializeAndSavePowerOfAttorneyUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/SerializeAndSavePowerOfAttorney',
+            webApiDeletePowerOfAttorneyUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/DeletePowerOfAttorney',
+            webApiGetLastUnsignedReportDocumentForUserUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/id/GetLastUnsignedReportDocumentForUser',
+            webApiGetEncryptedReportDocumentsForUserUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/GetEncryptedReportDocumentsForUser?reportVersionId=id',
+            webApiSignReportDocumentForUserUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/SignDocumentForUser',
+            webApiUpdateDecryptedDocumentsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/UpdateDecryptedDocuments',
+            webApiGetAllDocumentFormatListUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/GetAllDocumentFormatList',
+            webApiGetServicedOrganizationDocuments: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/Documents',
+            webApiGetPowerOfAttorneysList: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetPowerOfAttorneysList',
+            webApiDeleteDocumentFormatVersionUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/id/Delete',
+            webApiDeleteDepartmentSettingUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/id/Delete',
+            webApiRestoreDocumentFormatVersionUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/id/Restore',
+            webApiRestoreDepartmentSettingUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/id/Restore',
+            webApiGetAllVersionsForDocumentFormatForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/GetAllVersionsForDocumentFormat',
+            webApiGetGetEventHistoryForDepartmentSettingUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetActionHistory',
+            webApiGetReportInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetInfo/-1/organizationId',
+            webApiDoesAnyServicedOrganizationUseDepartmentSetting: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/DoesAnyServicedOrganizationUseDepartmentSetting',
+            webApiGetPfrCodes: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetPfrCodes',
+            webApiGetRosstatCodes: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/GetRosstatCodes',
+            webApiValidateAndGetCertificateInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Certificate/ValidateAndGetInfo',
+            webApiParseXsdFileUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/ParseXsdFile',
+            webApiGetExistingFormatForFilesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/GetExistingFormatForFiles',
+            webApiGetCertificateInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Certificate/thumbprint/GetCertificateInfo',
+            webApiGetUserCertificateInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/GetCertificate/userCertificateId',
+            webApiGetDepartmentsForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Department/GetAllForOperator',
+            webApiAddDepartmentForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Department/Add',
+            webApiEditDepartmentForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Department/Id/Edit',
+            webApiGetGetEventHistoryForDepartmentUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Department/GetActionHistory',
+            webApiGetReportLifeCycleSteps: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetReportLifeCycleSteps',
+            webApiGetReportLifeCycle: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/GetReportLifeCycle',
+            webApiGetDocumentLifeCycleSteps: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentid/GetLifeCycleSteps',
+            webApiGetReportButtonsVisibility: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetButtonsVisibility',
+            webApiUploadOrganizationDocuments: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/UploadFiles',
+            webApiExchangeDocumentGetButtonsVisibility: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetButtonsVisibility',
+            webApiExchangeDocumentCreateReceiptNotification: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/CreateReceiptNotification',
+            webApiForceCompleteDepartmentStateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/versionid/ForceCompleteDepartmentState/departmentTypeId',
+            webApiGetDepartmentStatesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetDepartmentStates',
+            webApiRetryDepartmentRegistrationUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/versionId/RetryDepartmentRegistration/departmentId',
+            webApiSetDocumentFlowAndValidateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/docid/orgid/SetDocumentFlowAndValidate/flowcode',
+            webApiTryParseDownLoadedFileOfFlow12Url: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/TryParseDownLoadedFileOfFlow12',
+            webApiStartRosstatCheckUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DepartmentSetting/id/StartRosstatCheck',
+            webApiGetIdOfDuplicateByFileName: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetIdOfDuplicateByFileName',
+            webApiGetDocumentForPreview: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId/GetDocumentForPreview',
+            webApiGetAgreementForPreview: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAgreementForPreview',
+            webApiGetAgreementFile: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAgreementFiles',
+            webApiGetResponseDocumentForPreview: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId/GetResponseDocumentForPreview',
+            webApiGetUnviewedDocumentCountUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/organizationId/GetUnviewedDocumentCount',
+            webApiGetDocumentFormatVersionUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/documentId/Get',
+            webApiGetDocumentFormatSpecificVersionUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/documentId/GetSpecificVersion',
+            webApiCreateDtoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/documentId/CreateDto',
+            webApiReSendFailedUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/ReSendFailed',
+            webApiExchangeDocumentGetDataToSignUnidoc: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetDataToSignUnidoc',
+            webApiGetOrganizationInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/organizationId/Info',
+            webApiGetOrganizationCardInfoForRegularUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/organizationId/GetCardInfoForRegular',
+            webApiGetUserCardInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/User/id/GetPersonalInfo',
+            webApiResetPasswordUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/user/ResetPassword',
+            webApiGetOrganizationCardInfoForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/organizationId/GetCardInfoForOperator',
+            webApiGetDemandCardUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetDemandCard/demandId/organizationId',
+            webApiGetDemandStateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetDemandState/demandId/organizationId',
+            webApiCreateDemandAnswerDocumentUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/CreateDemandAnswerDocument',
+            webApiCreateIonReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/CreateIonReport',
+            webApiCreateOutboxReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/CreateOutboxReport',
+            webApiGetAllRoutesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/GetAllRoutes',
+            webApiGetCounterpartyName: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetCounterpartyName/documentid/selectedorganizationid',
+            webApiExchangeDocumentRouteSettingNewRouteUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/SettingNewRoute',
+            webApiExchangeDocumentRouteSettingRouteUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/SettingRoute',
+            webApiExchangeDocumentRouteBreakRouteUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/BreakRoute',
+            webApiIsDocumentExchangeActionAvailableForUser: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId/IsActionAvailableForUser/actionId/servicedOrgId',
+            webApiExchangeDocumentRouteGetButtonsVisibility: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/GetButtonsVisibility',
+            webApiExchangDocumentGetAllRecipientRoutes: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/selectedOrganizationId/GetAllRecipientRoutes',
+            webApiExchangeDocumentSetDocumentRoute: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/SetDocumentRoute',
+            webApiExchangeDocumentEditDocumentRoute: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/EditRoute',
+            webApiGetOutgoingRegistersUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetOutgoingRegisters',
+            webApiGetIncomingRegistersUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetIncomingRegisters',
+            webApiGetFactorIncomingRegistersUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetFinancingIncomingRegisters',
+            webApiGetActsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetActs',
+            webApiGetFactorActsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetFactorActs',
+            webApiGetSupplyContractsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetSupplyContracts',
+            webApiSaveUniDocAttributesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/SaveUniDocAttributes',
+            webApiGetAllLoadedDocumentDescriptionForFnsPresentationUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/GetAllLoadedDocumentDescriptionForFnsPresentation',
+            webApiGetFnsDemandInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetDemandInfo',
+            webApiAssignMailToOrganizations: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/reportid/AssignMailToOrganizations',
+            webApiGetAllExchangeDocumentsForOperator: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetAllForOperator',
+            webApiGetRegistryInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetRegistryInfo/registryVersionId/selectedOrganisationId',
+            webApiGetRegistryInfoForOperatorUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetRegistryInfoForOperator/registryVersionId',
+            webApiCreateFnsDemandInventoryUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/CreateFnsDemandInventory',
+            webApiGetDocumentTypesForExchangeDocumentUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetDocumentTypes',
+            webApiGetFnsTitleUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetFnsTitle/organizationId',
+            webApiGetRoutesForExternalOrganizationUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocumentRoute/GetRoutesForExternalOrganization',
+            webApiGetFnsDepartmentListUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetDictionaryFnsDepartments',
+            webApiGetAllFnsDepartmentByParentCodeUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetAllFnsDepartmentsByParentCode',
+            webApiGetFileDtoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetFileDto',
+            webApiLoadDemandUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/LoadDemand',
+            webApiGetAllOrganizationsForFnsMailGridUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAllOrganizationsForFnsMailGrid',
+            webApiGetAllOrganizationsForFnsMailUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetAllOrganizationsForFnsMail',
+            webApiIsFnsCodeExistdUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/IsFnsCodeExist/fnsCode',
+            webApiCreateFnsDemandInventoryWithNdsExplanationsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/CreateFnsDemandInventoryWithNdsExplanations',
+            webApiGetDataToSignAgreementUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId/GetDataToSignAgreement/organizationVersionId',
+            webApiDocumentWorkflowActionUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/DocumentWorkflowAction',
+            webApiOtherUsersInOrganizationUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/organizationId/OtherUsers',
+            webApiStartDocumentAgreementWorkflowUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/StartDocumentAgreementWorkflow',
+            webApiGetWorkflowActionsInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/documentId/GetWorkflowActionsInfo',
+            webApiRemoveParticipantFromAgreementInProcessUrl : 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/RemoveParticipantFromAgreementInProcess',
+            webApiGetContragentInfoForOrganization: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetContragentInfoForOrganization/organizationid/iscreatedbycreditor',
+            webApiFactoringConditionInfoForOrganizationAndDebtor: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/FactoringConditionInfoForOrganizationAndDebtor',
+            webApiGetFactoringConditionSupplyContractInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetFactoringConditionSupplyContractInfo',
+            webApiExchangeDocumentGetHistory: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetHistory/documentId/selectedOrganizationId',
+            webApiGetFactoringContractInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetFactoringContractInfo',
+            webApiGetExchangeDocumentsForFacrotingRegistry: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/ExchangeDocumentsForFacrotingRegistry',
+            webApiGetExchangeDocumentsInfoForFactoring: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/ExchangeDocumentsInfoForFactoring',
+            webApiGetContractInfoForFactoringUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetContractInfoForFactoring',
+            webApiSaveFactoringRegistry: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/SaveRegistry',
+            webApiGetDocumentsToSignUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetDocumentsToSign/factoringConditionId/organizationid/approveDealValue',
+            webApiGetDocumentsForOperatorUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetDocumentsForOperator/factoringConditionId/approveDealValue',
+            webApiUpdateSupplyContractStateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/UpdateSupplyContractState',
+            webApiPreviewInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetPreviewInfo',
+            webApiGetDataToSignRegistryForSend: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/registryversionid/GetDataToSignRegistryForSend/selectedservicedorganizationid',
+            webApiSignAndSendRegistry: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/SignAndSendRegistry',
+            webApiGetCreditorInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetCreditorInfo/organizationId',
+            webApiLoadAndSavePowerOfAttorneyForEmployeeAndReport: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/LoadAndSavePowerOfAttorneyForEmployeeAndReport',
+            webApiDeclineRegistry:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/DeclineRegistry',
+            webApiGetAllNotApprovedUserInOrganizationStatesDescription: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/GetAllNotApprovedUserInOrganizationStatesDescription',
+            webApiGetCertificateDataForRegistry: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetCertificateDataForRegistry',
+            webApiGetOrganizationInfoForPowerOfAttorneyCreationUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetOrganizationInfoForPowerOfAttorneyCreation/servicedOrganizationVersionId',
+            webApiGetOrganizationInfoForPowerOfAttorneyCreationIfOrganizationIsUnknownUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetOrganizationInfoForPowerOfAttorneyCreationIfOrganizationIsUnknown',
+            WebApiGetPowerOfAttorneyInfoUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetPowerOfAttorneyInfo',
+            WebApiGetPowerOfAttorneyForPreviewUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetPowerOfAttorneyForPreview',
+            webApiGetIdentityDocumentTypesUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetIdentityDocumentTypes',
+            webApiAddCommentForRegistryItemUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/AddCommentForRegistryItem',
+            webApiParseLoadedPowerOfAttorneyUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/ParseLoadedPowerOfAttorney',
+            webApiGetPowerOfAttorneyPreviewFromFile: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/GetPowerOfAttorneyPreviewFromFile',
+            webApiGetCommentHistoryForRegistryItemUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetCommentHistoryForRegistryItem/registryVersionId/registryItemId/selectedOrganisationId',
+            webApiGetCertificateDataForDocument: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/GetSignatureInfo/signatureId/selectedOrganizationId',
+            webApiGetCertificateDataForDocumentForOperator: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/GetSignatureInfoForOperator/signatureId',
+            webApiGetCertificateContentForDocument: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/GetSignatureInfo/signatureId/selectedOrganizationId',
+            webApiGetCertificateContentForDocumentForOperator: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/GetSignatureInfoForOperator/signatureId',
+            webApiGetClassifierOfCountriesUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetClassifierOfCountries',
+            webApiCalculateCommissionAndAmountUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/CalculateCommissionAndAmount',
+            webApiGetDocumentAgreemersUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetDocumentAgreemers/documentId/selectedOrganizationId',
+            webApiGetUncorrectDocumentApproversListForEditUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/GetUncorrectDocumentApproversListForEdit/documentId/selectedOrganizationId',
+            webApiUpdateDocumentApproversListUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/UpdateDocumentApproversList',
+            webApiStopRetrySendUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/OperatorUtils/StopRetrySend',
+            webApiEditFactoringFormatUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/DocumentFormatVersion/EditFactoringFormat',
+            webApiDeleteAdditionalDocumentUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ExchangeDocument/DeleteAdditionalDocument',
+            webApiValidateFactoringRegistryLimitsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/ValidateLimits/registryVersionId/organizationId',
+            webApiIsOrganizationBlockedByDepartmentUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/IsOrganizationBlockedByDepartment/servicedOrganizationId/departmentTypeId',
+            webApiCheckAnalyticAccountUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/CheckAnalyticAccount/registryVersionId/organizationId',
+            webApiChangeOrganizationBlockStateUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Organization/ChangeOrganizationBlockState',
+            webApGetUniDocTypeUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Dictionary/GetUniDocType',
+            webApiAnalyticAccountPreviewInfo: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/AnalyticAccountPreview',
+            webApiGetEmployeeCertificatesUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/UserInOrganization/GetEmployeeCertificates/organizationId',
+            webApiSavePowerOfAttorney: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/SavePowerOfAttorney',
+            webApiGetDocumentEditorDataUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/documentId/GetDocumentEditorData',
+            webApiUpdateDocumentDataUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/ReportDocument/UpdateDocumentData',
+            webApiGetCountUnviewedRegistryUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetCountUnviewedRegistry/organizationId',
+            webApiGetAvailibleReportsForSendUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetAvailibleReportsForSend',
+            webApiGetReportsDocumentForSignUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetReportsDocumentForSign',
+            webApiSignAndSendReportsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/SignAndSendReports',
+            webApiIsExistDuplicateReportNameUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Report/IsExistDuplicateReportName/reportName/organizationId/departmentTypeId',
+            webApiGetRegistryLifeCycleStepsUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetRegistryGetLifeCycleSteps/registryVersionId/selectedOrganisationId',
+            webApiSaveApproveDeal: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/SaveApproveDeal',
+            webApiGetUnprocessedMessages: 'https://eds-pro-webapi-trunk.fintender.ru/api/OperatorUtils/GetUnprocessedMessages',
+            webApiGetUnprocessedMessageFiles: 'https://eds-pro-webapi-trunk.fintender.ru/api/OperatorUtils/GetUnprocessedMessageFiles',
+            webApiRevokeRegistryUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/RevokeRegistry',
+            webApiGetCountUnviewedByFactorActsUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/Factoring/GetCountUnviewedByFactorActs/organizationId',
+            webApiTranslateReportToErrorStateUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/TranslateReportToErrorState/reportId',
+            webApiGetCountUnviewedUnprocessedMessagesUrl:'https://eds-pro-webapi-trunk.fintender.ru/api/OperatorUtils/GetCountUnviewedUnprocessedMessages',
+            webApiGetCountOfAvailibleReportsForSendUrl: 'https://eds-pro-webapi-trunk.fintender.ru/api/Report/GetCountOfAvailibleReportsForSend',
+
+            webUiViewDocumentFormats: '/DocumentFormat',
+            webUiViewDocumentFormat: '/DocumentFormatVersion/Get/documentFormatId',
+            webUiViewDepartmentSettings: '/DepartmentSetting',
+            webUiViewDepartment: '/Department/Get/Id',
+            webUiViewReportCard: '/Report/Card',
+            webUiViewReportCardForOperator: '/Report/CardForOperator',
+            webUiManageFnsMail: '/Report/ManageFnsMail',
+            webUiViewFormatCardForOperator: '/DocumentFormatVersion/Get', 
+            webUiViewDepartmentSettingCard: '/DepartmentSetting/Get', 
+            webUiViewDepartmentCard: '/Department/Get',
+            webUiViewFnsReports: '/Report',
+            webUiViewFnsIonReports: '/Report/IonGrid',
+            webUiViewFnsDemands: '/Report/FnsDemandGrid',
+            webUiViewFnsPresentations: '/Report/FnsPresentationGrid',
+            webUiViewFnsIncoming: '/Report/FnsIncomingGrid',
+            webUiViewFnsMail: '/Report/FnsMailGrid',
+            webUiViewFnsOutboxs: '/Report/FnsOutboxGrid',
+            webUiViewPfrReports: '/Report/PfrGrid',
+            webUiViewRosstatReports: '/Report/RosstatGrid',
+            webUiViewFssReports: '/Report/FssGrid',
+            webUiSelectServicedOrganization: '/Account/SelectServicedOrganization',
+            webUiSigninPage: '/Account/SignIn',
+            webUiPersonalInfoPage: '/Account/PersonalInfo',
+            webUiOrganizationList: '/Organization',
+            webUiFnsDemandAnswer: '/Report/FnsDemandAnswer',
+            webUiFnsDemandAnswerWithId: '/Report/FnsDemandAnswer?demandId=demandIdForAnswer',
+            webUiShowAllRequests: '/Organization/ShowAllRequests',
+            webUiViewOrganizationCard: '/Organization/OrganizationCard',
+            webUiViewRequestCardForOperator: '/Organization/RequestCardForOperator',
+            webUiViewAddOrganization: '/Organization/AddOrganization',
+            webUiEditOrganization: '/Organization/EditOrganization/versionOrganizationId',
+            webUiRestoreOrganization: '/Organization/RestoreOrganization/versionOrganizationId',
+            webUiViewUserCard: '/Account/UserCard',
+            webUiViewNotificationCard: '/Notification/NotificationCard',
+            webUiGetAgreementFile: '/Organization/GetAgreementFile',
+            webUiGetServicedOrganizationVersionDocument: '/Organization/GetDocument',
+            webUiAddDocumentFormatVersionUrl: '/DocumentFormatVersion/Add?departmentId=currentDepartmentId',
+            webUiViewExchangeDocumentCardUrl:'/ExchangeDocument/Card',
+            webUiViewExchangeDocuments:'/ExchangeDocument',
+            webUiGetRequestsInExcelUrl:'/Organization/GetRequestsInExcel',
+            webUiGetReportDocumentUrl:'/ReportDocument/GetDocument' + '?id=reportdocumentid&amp;fileguid=fileguidparameter',
+            webUiGetDemandCardUrl:'/Report/GetDemandCard',
+            webUiExchangeDocumentRouteGrid: '/ExchangeDocumentRoute',
+            webUiExchangeDocumentRouteCard: '/ExchangeDocumentRoute/Card',
+            webUiExchangeDocumentOperateRouteCard: '/ExchangeDocumentRoute/Operate',
+            webUiExchangeDocumentGetRouteForEdit: '/ExchangeDocumentRoute/Edit',
+            webUiGetOutgoingRegisters: '/Factoring',
+            webUiManageFnsMailGrid: '/Report/ManageFnsMailGrid',
+            webUiGetRegistryCard: '/Factoring/RegistryCard',
+            webUiGetFactoringSupplyContractCard: '/Factoring/FactoringSupplyContractCard',
+            webUiExchangeDocumentGetCardForOperator: '/ExchangeDocument/CardForOperator',
+            webUiExternalOrganizationCard: '/Organization/ExternalOrganizationCard',
+            webUiUserCard: '/User/UserCard',
+            webUiFnsDemandAnswerForNdsExplanations: '/Report/FnsDemandAnswerForNdsExplanations',
+            webUiFnsDemandAnswerForNdsExplanationsWithId: '/Report/FnsDemandAnswerForNdsExplanations?demandId=demandIdForAnswer',
+            webUiAssignUser: '/Organization/AssignUser/versionId',
+            webUiFactoringRegistryGrid: '/Factoring',
+            webUiGetFactoringRegistryCard: '/Factoring/RegistryCard',
+            webUiGetFactoringRegistryVersionCard: '/Factoring/RegistryCard/registryVersionId',
+            webUiFactoringIncomingRegistryGrid: '/Factoring/IncomingRegisters',
+            webUiFactoringEditRegistry: '/Factoring/EditRegistry/registryVersionId',
+            webUiGetCertificateContentForDocument: '/ReportDocument/GetCertificate?signatureId=sigId&amp;amp;selectedOrganizationId=orgId',
+            webUiGetCertificateContentForDocumentForOperator: '/ReportDocument/GetCertificateForOperator?signatureId=sigId',
+            webUiUserInOrganizationGetCertificate: '/UserInOrganization/GetCertificateData/sigId',
+            webUiFactoringGetCertificate: '/Factoring/GetCertificateData?registryId=regId&amp;amp;organizationId=orgId&amp;amp;actionFor=_action',
+            webUiGetCertificateDataForOperatorUrl: '/Factoring/GetCertificateDataForOperator?registryId=regId&amp;amp;actionFor=_action',
+            webUiDownloadFactoringUrl: '/Factoring/Download?registryVersionId=registryversionid&amp;amp;organizationId=organizationid&amp;amp;templateName=templatename',
+            webUiDownloadFactoringForOperatorUrl: '/Factoring/DownloadForOperator?registryVersionId=registryversionid&amp;amp;templateName=templatename',
+            webUiDownloadFactoringRegistryItemDocumentUrl: '/Factoring/DownloadRegistryItemDocument',
+            webUiDownloadPowerOfAttorneyUrl: '/Factoring/DownloadPowerOfAttorney?registryVersionId=registryversionid&amp;amp;fileId=fileid&amp;amp;organizationId=organizationid',
+            webUiDownloadPowerOfAttorneyForOperatorUrl: '/Factoring/DownloadPowerOfAttorneyForOperator?registryVersionId=registryversionid&amp;amp;fileId=fileid',
+            webUiUpdateAllowedOperationsUrl: '/Account/UpdateAllowedOperations',
+            webUiEditDocumentFormatVersion: '/DocumentFormatVersion/Edit',
+            webUiEditFactoringDocumentFormatVersion: '/DocumentFormatVersion/EditFactoringFormat',
+            webUiViewUnprocessedMessageCard: '/OperatorUtils/UnprocessedMessageCard',
+            webUiGetUnprocessedMessageFile: '/OperatorUtils/GetUnprocessedMessageFile'
+        },
+
+        templatePathConstants: {
+            templateServicedOrganizationControl: '/Scripts/Templates/servicedOrganizationControl.html'
+        },
+
+        eventNames: {
+            certificateSelectedEventName: 'certificateSelectedEvent',
+            getCertificateDataSuccsessEventName: 'getCertificateDataSuccsess',
+            getCertificateDataSuccsessForWindowEventName: 'getCertificateDataSuccsessForWindow',
+            sendButtonPressedAndCertificateSelectedEventName: 'sendButtonPressedAndCertificateSelected',
+            getCertificateDataSuccsessForOrganizationEventName: 'getCertificateDataSuccsessForOrganization',
+            signAndSendButtonPressOfEditRecoverOrganizationEventName: 'signAndSendButtonPressOfEditRecoverOrganization',
+            signAndSendDocumentAgreement: 'signAndSendDocumentAgreement',
+            loadPowerOfAttorneyEventName: 'loadPowerOfAttorney',
+            powerOfAttorneyRemovedEventName: 'powerOfAttorneyRemoved',
+            calculateAmountAndCommission: 'calculateamountandcommission'
+        },
+
+        consts: {
+            threeDots: " ...",
+            decimalRegExp: /^(\d+((\.|\,)?\d{0,2}|(\.|\,)\d{0,2}))$/g,
+            intRegExp: /^\d+$/g,
+            emailRegExp: /^([a-zA-Z0-9\-\._]*\@?[a-zA-Z0-9\-_]*\.?[a-zA-Z0-9\-_]*)$/g,
+            selectedServicedOrganizationIdCoockieName: 'selectedServicedOrganizationId',
+            employeeNameCoockieName: 'employeeName',
+            defaultCertificateIdCoockieName: 'defaultCertificateId_',
+            defaultCertificateThumbprintCoockieName: 'defaultCertificateThumbprint_',
+            modelStateErrorNameConstantsErrorDescriptionName: 'ErrorDescription',
+            modelStateErrorNameConstantsErrorStateName: 'ErrorState',
+
+            stateParametersConstantSwitchToOrgIdName: 'SwitchToOrgIdName',
+
+            pikExchangeLicenseFileName: 'Лицензионный ЭДО для МО.docx',
+            fullOrganizationRequestStateConstantSentToOperatorForApproval: 0,
+            fullOrganizationRequestStateConstantProcessingByIrud_NotSend: 10,
+            fullOrganizationRequestStateConstantProcessingByIrud_InProgress: 11,
+            fullOrganizationRequestStateConstantProcessingByIrud_Error: 12,
+            fullOrganizationRequestStateConstantProcessingByIrud_Done: 13,
+            fullOrganizationRequestStateConstantProcessingByFns_NotSend: 15,
+            fullOrganizationRequestStateConstantProcessingByFns_InProgress: 16,
+            fullOrganizationRequestStateConstantProcessingByFns_Error: 17,
+            fullOrganizationRequestStateConstantProcessingByFns_Done: 18,
+            fullOrganizationRequestStateConstantProcessingByPfr_NotSend: 19,
+            fullOrganizationRequestStateConstantProcessingByPfr_InProgress: 20,
+            fullOrganizationRequestStateConstantProcessingByPfr_Error: 21,
+            fullOrganizationRequestStateConstantProcessingByPfr_Done: 22,
+            fullOrganizationRequestStateConstantCanceled: 40,
+            fullOrganizationRequestStateConstantApproved: 50
+        }
+    };
+
+    var cryptoProBrowserPluginProviderAsyncUrl = '/Scripts/CryptoProBrowserPluginProviderAsync?v=RsqAxvpRvtKeWSnWvT8_XGvmQMfCb5HxIFf47Spcbec1\
+';
+    var cryptoProBrowserPluginProviderSyncUrl = '/Scripts/CryptoProBrowserPluginProviderSync?v=iDs1M1MbtEnVs9RWubmyLVvQxCY1Gf8DlYZP5poZoIk1\
+';
+</script>
+    <!--[if lt IE 9]>
+        <script src="/Scripts/html5?v=WZEYiYV1QTJxdiN4H_5AQTmBTAcuXcGuA95oZ3XpYww1"></script>
+
+    <![endif]-->
+<script type="text/javascript" src="chrome-extension://iifchhfnnmpdbibifmljnfjhpififfog/nmcades_plugin_api.js"></script><script type="text/javascript" src="chrome-extension://epebfcehmdedogndhlcacafjaacknbcm/nmcades_plugin_api.js"></script><script type="text/javascript" src="/Scripts/CryptoProBrowserPluginProviderAsync?v=RsqAxvpRvtKeWSnWvT8_XGvmQMfCb5HxIFf47Spcbec1"></script></head>
+<body class="">
+<template id="custom-select">
+    <div class="custom-select">
+        <div class="value-holder" data-bind="click: toggleOptionsList">
+            <div class="text-wrapper" data-bind="text: valueText">
+            </div>
+            <div class="toggle-wrapper">
+                <i class="lnr lnr-chevron-down"></i>
+            </div>
+        </div>
+        <div class="options-list options-closed" data-bind="foreach: options">
+            <div class="option" data-bind="text: $data[$parent.optionsText], click: $parent.selectOption"></div>
+        </div>
+    </div>
+</template>
+<div class="main-wrap">
+    <div class="top-keep">
+        <header class="header">
+            <div class="wrapper">
+                <div class="header__logo">
+                    <a href="/">
+                        <img src="/img/ft-logo.png" />
+                    </a>
+                </div>
+                
+    <div class="header__breadcrumbs">
+        <a href="/">Главная</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <a href="/Account/PersonalInfo">Личный кабинет</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <a href="/Organization">Организации</a><i class="fa fa-angle-right" aria-hidden="true"></i>
+        <span>
+            Добавление новой организации
+    </span>
+</div>
+
+                    <div class="stopBinding" data-bind="stopBinding: true">
+        <div id="user-cabinet-control" class="user-cabinet">
+            <!-- ko if: hasDefaultCertificate --><!-- /ko -->
+            <!-- ko ifnot: hasDefaultCertificate -->
+            <div class="user-account-btn">
+                <i class="edo edo-menu-dots"></i>
+            </div>
+            <ul class="account-actions" style="display: none;">
+                <li><span class="info-certificate" data-bind="click: selectDefaultCertificate, html: certificateMenuTitle">Выбрать сертификат</span></li>
+                <li><a href="/Account/PersonalInfo" class="username">Личный кабинет (user@user.com)</a></li>
+                <li><a href="/Account/SignOut" onclick="(function() { $.connection.hub.stop(); })()" class="logout">Выход</a></li>
+            </ul>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div class="organization-type selected">
+    
+    <span class="organization-type-btn">
+        <span class="inline-block">
+            <span class="block">
+                <span class="nameOrganization">ООО Силуэт</span>
+                <span class="infoOrganization">(ИНН:7720745867 КПП:123456789)</span>
+            </span>
+            <span class="block text-right">
+                <span class="employeeName" data-bind="text: $data.userName">Грачева Евгения Ивановна (тест)</span>
+            </span>
+        </span>
+        <i class="lnr lnr-cog"></i>
+    </span>
+    <div class="organizations-list mCustomScrollbar _mCS_1 mCS_no_scrollbar" style=""><div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: 3731px;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+        
+        <span class="organization selected" data-orgid="1">
+            <span>ООО Силуэт</span>
+            <span>(ИНН:7720745867 КПП:123456789)</span>
+        </span>
+        
+        <span class="organization " data-orgid="2">
+            <span>ООО "Соларлаб"</span>
+            <span>(ИНН:9204560423 КПП:920401001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="3">
+            <span>ИП Михалкович</span>
+            <span>(ИНН:384401313825)</span>
+        </span>
+        
+        <span class="organization " data-orgid="6">
+            <span>АО Минудобренияяя</span>
+            <span>(ИНН:3627000397 КПП:362701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="9">
+            <span>ООО Трансойл</span>
+            <span>(ИНН:7816228080 КПП:781301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="14">
+            <span>ООО деньги будут</span>
+            <span>(ИНН:7840497599 КПП:783801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="16">
+            <span>ООО Совфрахт Шиппинг321</span>
+            <span>(ИНН:7722202506 КПП:770701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="28">
+            <span>ИП Иванов Илья Игоревич</span>
+            <span>(ИНН:771365153717)</span>
+        </span>
+        
+        <span class="organization " data-orgid="29">
+            <span>ИП Иванов Илья Анатольевич</span>
+            <span>(ИНН:772027174308)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30">
+            <span>ООО Торговый Центр "Европа"</span>
+            <span>(ИНН:3904045138 КПП:390601001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="31">
+            <span>ООО Торговый Центр "Европа"</span>
+            <span>(ИНН:2404007693 КПП:240401022)</span>
+        </span>
+        
+        <span class="organization " data-orgid="33">
+            <span>ООО Финтендер-криптопро</span>
+            <span>(ИНН:7724772903 КПП:123456789)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10032">
+            <span>РКК "Энергия"</span>
+            <span>(ИНН:5018033937 КПП:501801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10053">
+            <span>Кактус</span>
+            <span>(ИНН:7802180329 КПП:780401001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10057">
+            <span>Рустехнопром</span>
+            <span>(ИНН:7708825918 КПП:770801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10060">
+            <span>ООО "Финуниверконсалтинг"</span>
+            <span>(ИНН:7730697348 КПП:772901001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10067">
+            <span>ОАО КТЗ</span>
+            <span>(ИНН:4026007424 КПП:402801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10069">
+            <span>ООО Доврэ Груп</span>
+            <span>(ИНН:7707718889 КПП:781401001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10089">
+            <span>АСК_новый</span>
+            <span>(ИНН:6658399762 КПП:665801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10117">
+            <span>ООО Инвесттраст</span>
+            <span>(ИНН:7730567081 КПП:775101001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10118">
+            <span>ООО Энка ТЦ</span>
+            <span>(ИНН:7702190316 КПП:774901001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10121">
+            <span>И1111</span>
+            <span>(ИНН:7707111780 КПП:770701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10130">
+            <span>Александр</span>
+            <span>(ИНН:7734057170 КПП:773401050)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10131">
+            <span>Владимир</span>
+            <span>(ИНН:4004006434 КПП:400401001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10133">
+            <span>П</span>
+            <span>(ИНН:7707268693 КПП:770701010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10148">
+            <span>В</span>
+            <span>(ИНН:7707172374 КПП:770701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10149">
+            <span>Сергей</span>
+            <span>(ИНН:7707005817 КПП:770701090)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10150">
+            <span>Виктор</span>
+            <span>(ИНН:7011003052 КПП:773101001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10151">
+            <span>Виталий</span>
+            <span>(ИНН:7536153724 КПП:753601001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10152">
+            <span>В</span>
+            <span>(ИНН:8469825472 КПП:730316664)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10153">
+            <span>Д</span>
+            <span>(ИНН:7726051865 КПП:603237256)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10154">
+            <span>Александр</span>
+            <span>(ИНН:7733087703 КПП:773301010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10155">
+            <span>Александр</span>
+            <span>(ИНН:5044020204 КПП:504401001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10159">
+            <span>ООО Тестеры</span>
+            <span>(ИНН:525602024396)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10160">
+            <span>ИП-Тест-Петров</span>
+            <span>(ИНН:771401270433)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10161">
+            <span>Михаил</span>
+            <span>(ИНН:5250548021 КПП:471105570)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10162">
+            <span>Дмитрий</span>
+            <span>(ИНН:7734156861 КПП:773401010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10163">
+            <span>Людмила</span>
+            <span>(ИНН:7733083829 КПП:773301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10165">
+            <span>Курочкина Лариса Викторовна, ИП11</span>
+            <span>(ИНН:232004166534)</span>
+        </span>
+        
+        <span class="organization " data-orgid="10171">
+            <span>0206 МОУ ДЕТСКИЙ САД № 366</span>
+            <span>(ИНН:3443905734 КПП:344301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="20225">
+            <span>0206 ГЭК-536</span>
+            <span>(ИНН:6673104950 КПП:667001001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="20226">
+            <span>0206 ОРИОН СТРОЙ С ООО 5272</span>
+            <span>(ИНН:7733015875 КПП:773301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30257">
+            <span>Новая организация2</span>
+            <span>(ИНН:6732058320 КПП:673201001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30258">
+            <span>Новая организация3</span>
+            <span>(ИНН:7713279340 КПП:502701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30275">
+            <span>МРО СВИДЕТЕЛИ ИЕГОВЫ 2</span>
+            <span>(ИНН:2225031139 КПП:222501001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30315">
+            <span>0206 АК144</span>
+            <span>(ИНН:5001095420 КПП:987897897)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30321">
+            <span>0206 ТРАНЗИТ84</span>
+            <span>(ИНН:5028004276 КПП:502801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30346">
+            <span>ИП Люля-Кебаб</span>
+            <span>(ИНН:160200020679)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30351">
+            <span>0206</span>
+            <span>(ИНН:225701019600)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30352">
+            <span>0206</span>
+            <span>(ИНН:561215323559)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30353">
+            <span>СТОЛИЧНЫЙ ФИНАНСОВЫЙ АЛЬЯНС АОЗТ 4882</span>
+            <span>(ИНН:7733005073 КПП:773301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30354">
+            <span>0206</span>
+            <span>(ИНН:541405049527)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30355">
+            <span>0206</span>
+            <span>(ИНН:541405049527)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30357">
+            <span>Стис-Серпухов, ООО</span>
+            <span>(ИНН:5077019324 КПП:507701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30363">
+            <span>ИП Абитова Ыкывал Маматжановна</span>
+            <span>(ИНН:421307295230 КПП:123456789)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30365">
+            <span>МЕГАТОН ООО 7933</span>
+            <span>(ИНН:7733075955 КПП:773301010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30366">
+            <span>"СТРОЙИНВЕСТ ПЛЮС" (2 ОТД.)3052 БУХ.ДЕЛО</span>
+            <span>(ИНН:7733075955 КПП:770701090)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30368">
+            <span>ПАО "СЗ"</span>
+            <span>(ИНН:9106001900 КПП:773450050)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30379">
+            <span>ООО "АРДОН"</span>
+            <span>(ИНН:4905098261 КПП:111111111)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30380">
+            <span>ИП Алисименко Роман</span>
+            <span>(ИНН:780445570132)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30383">
+            <span>ИП Глухов Виктор Владимирович</span>
+            <span>(ИНН:920300083823)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30436">
+            <span>ЖСК "79/23"</span>
+            <span>(ИНН:3435304722 КПП:602701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30437">
+            <span>В/Ч №49691</span>
+            <span>(ИНН:7609021835 КПП:123456789)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30443">
+            <span>Соловьева Юлия Александровна, ИП</span>
+            <span>(ИНН:504401223799)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30444">
+            <span>Евростиль, ООО</span>
+            <span>(ИНН:7728724467 КПП:772801001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30446">
+            <span>Хрюкому, ООО</span>
+            <span>(ИНН:4017008326 КПП:401701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30448">
+            <span>СахМП, ОАО</span>
+            <span>(ИНН:6509000854 КПП:650901001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30450">
+            <span>Петровский Камень, ООО</span>
+            <span>(ИНН:7609028990 КПП:760901001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30452">
+            <span>Элет, ООО</span>
+            <span>(ИНН:3617008502 КПП:361701001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30458">
+            <span>Аквасервис, ООО</span>
+            <span>(ИНН:1108020526 КПП:110201001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30459">
+            <span>Вукинг, ООО</span>
+            <span>(ИНН:5036131824 КПП:503601001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30460">
+            <span>СК "Цефей"</span>
+            <span>(ИНН:3444112230 КПП:344401001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30461">
+            <span>Белуга Маркет, ООО</span>
+            <span>(ИНН:7727251521 КПП:501501001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30462">
+            <span>Реус, ООО</span>
+            <span>(ИНН:6102031143 КПП:610201001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30464">
+            <span>Экоплат, ООО</span>
+            <span>(ИНН:7802323986 КПП:780201001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30466">
+            <span>ВиТА, ООО</span>
+            <span>(ИНН:3003005122 КПП:300301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30468">
+            <span>Санторин, ООО</span>
+            <span>(ИНН:7722842785 КПП:772201001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30469">
+            <span>КАРАИДЕЛЬ (15991/5485)</span>
+            <span>(ИНН:7734159911 КПП:773401010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30470">
+            <span>Результат Плюс, ООО</span>
+            <span>(ИНН:9710003612 КПП:771001001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30472">
+            <span>ОАО "КАТС"</span>
+            <span>(ИНН:5818004004 КПП:246301001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30479">
+            <span>ИЗНИК (16952/7270)</span>
+            <span>(ИНН:7734169525 КПП:773401010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30483">
+            <span>ООО "ВИКС"</span>
+            <span>(ИНН:5632020219 КПП:563201001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30518">
+            <span>Обычный ЮЛ уникальный</span>
+            <span>(ИНН:7734068358 КПП:770811111)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30529">
+            <span>"БК ФРИСКО" (1) 6792 БУХ.ДЕЛО</span>
+            <span>(ИНН:7707212764 КПП:770701010)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30530">
+            <span>ОАО "ДОМ КНИГИ"</span>
+            <span>(ИНН:8905044418 КПП:890501001)</span>
+        </span>
+        
+        <span class="organization " data-orgid="30541">
+            <span>ЗАО "ДЕЗДЕЛО"</span>
+            <span>(ИНН:3620008541 КПП:362001001)</span>
+        </span>
+        
+    </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+    
+</div>
+<script src="/bundles/regularUserMenu?v=MGYr4F7jB7snkni5Td8uOX1X6bbcngOvseIM8PY-IaI1"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // при загрузке страницы - обновляем список обслуживаемых организаций
+            window.refreshUserOrganizations();
+            // если у нас произошло событие смены статуса обслуживаемой организации - обновляем список обслуживаемых организаций
+            $(document).on("organizationStatusChanged",
+                function (e, model) {
+                    if (model.IsAvailableListChanged) {
+                        window.refreshUserOrganizations(function () {
+                            //TODO: перезагрузить список доступных организаций
+                            location.reload();
+                        });
+                    }
+                });
+            $(document).on('TEMPLATE_LOADED',
+                function (e, path, additionalData) {
+                    if (path === window.resourceObject.templatePathConstants.templateServicedOrganizationControl) {
+                        window.renderUserOrganizations(additionalData.data, additionalData.successCallback);
+                    }
+                });
+            //  ko.cleanNode($("#user-cabinet-control")[0]);
+            window.userViewModel = regularUserVM;
+            ko.applyBindings(window.userViewModel, document.getElementById("user-cabinet-control"));
+        });
+    </script>
+
+
+            </div>
+        </header>
+    </div>
+
+        <div class="page wrapper">
+
+    <div class="page__left">
+    <div class="sidebar-fixed-content">
+        <div class="collapse-sidebar left"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+        <div class="sidebar-content maximized">
+            <a href="/Account/PersonalInfo" class="big-icon-link">
+                <i class="edo edo-personal-info"></i>
+                <span>Личные данные</span>
+            </a>
+                <a href="/Organization" class="big-icon-link">
+                    <i class="edo edo-user-organizations"></i>
+                    <span>Организации</span>
+                </a>
+        </div>
+        <div class="sidebar-content minimized">
+            <a title="Личные данные" href="/Account/PersonalInfo" class="mini-icon-link">
+                <i class="edo edo-personal-info"></i>
+            </a>
+                <a title="Организации" href="/Organization" class="mini-icon-link">
+                    <i class="edo edo-user-organizations"></i>
+                </a>
+        </div>
+    </div>
+</div>
+                <div class="page__right">
+        <div class="sidebar-fixed-content">
+            <div class="collapse-sidebar right"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+            <div class="sidebar-content">
+                <div class="slick-previous slick-arrow slick-hidden" aria-disabled="true" tabindex="-1">
+                    <span class="fa fa-angle-up"></span>
+                </div>
+                <div class="slider slick-initialized slick-slider slick-vertical">
+                    <div aria-live="polite" class="slick-list" style="height: 714px;"><div class="slick-track" style="opacity: 1; height: 714px; transform: translate3d(0px, 0px, 0px);"><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 178px;">
+                        <a href="#" class="big-icon-link disabled">
+                            <i class="lnr lnr-calendar-full"></i>
+                            <span>Календарь бухгалтера</span>
+                        </a>
+                    </div><div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 178px;">
+                        <a href="https://fintender.ru" class="big-icon-link" target="_blank">
+                            <i class="edo edo-fin-services"></i>
+                            <span>Финансовые сервисы</span>
+                        </a>
+                    </div><div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 178px;">
+                        <a href="/Help/Contacts" class="big-icon-link">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <span>Контакты сервисного<br />центра</span>
+                        </a>
+                    </div><div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 178px;">
+                        <a href="https://fintender.ru/ok" class="big-icon-link" target="_blank">
+                            <i class="edo edo-check-contragent"></i>
+                            <span>Проверка контрагента</span>
+                        </a>
+                    </div><div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 178px;">
+                        <a href="" class="big-icon-link disabled">
+                            <i class="edo edo-law-support"></i>
+                            <span>Юридическая <br />поддержка</span>
+                        </a>
+                    </div><div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 178px;">
+                        <a href="" class="big-icon-link disabled">
+                            <i class="edo edo-logistics"></i>
+                            <span>Сервис логистика</span>
+                        </a>
+                    </div><div class="slick-slide slick-active" data-slick-index="6" aria-hidden="false" style="width: 178px;">
+                        <a href="/Help/Help" class="big-icon-link">
+                            <i class="lnr lnr-question-circle"></i>
+                            <span>Справка</span>
+                        </a>
+                    </div></div></div>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+                <div class="slick-next slick-arrow slick-hidden" aria-disabled="true" tabindex="-1">
+                    <span class="fa fa-angle-down"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <div class="page__center">
+                
+
+
+
+<div id="scroll-content"><div class="notification-wrap relative">
+        <div id="notification-wrap"></div>
+    </div>
+    <h1>Добавление организации</h1>
+    <form id="addOrganizationForm">
+        <div class="classic accordion">
+                <i class="lnr lnr-circle-minus accordion_little-toggler" aria-hidden="true"></i>
+                <div class="accordion_toggle">
+                    <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Заполнить данные сертификата
+                </div>
+
+            <div class="accordion_body initial-open">
+                    <div class="form-section form-section-wide w50p mr10_children">
+                        <label>Сертификат</label>
+                        <button type="button" class="btn" data-bind="text: selectButtonName, click: selectCertificate">Заполнить из сертификата</button>
+                            <a href=" https://private.fintender.ru/home/User/Login" target="_blank" class="nowrap">У меня нет сертификата</a>
+                            <a href="/Account/DownloadInstructionForCertificate" class="nowrap" title="Краткая инструкция по получению квалифицированной ЭП">Краткая инструкция по получению квалифицированной ЭП</a>
+                    </div>
+                    <div class="form-section form-section-wide w50p">
+                        <div class="local accordion">
+                            <div class="accordion_toggle">
+                                <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Владелец сертификата
+                            </div>
+                            <div class="accordion_body initial-open">
+                                <div class="anim-placeholder-wrap">
+                                    <label class="search asinput disabled" data-bind="text: fio, css: {disabled: HasAnyReportInProcess() || !isCertificateSelected()}">Фамилия, имя, отчество</label>
+                                </div>
+                                <div class="anim-placeholder-wrap">
+                                    <span class="placeholder bottom">СНИЛС</span><input id="snils" class="search anim-placeholder disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" disabled="" type="text" data-bind="value: Snils" placeholder="СНИЛС" />
+                                </div>
+                                <div class="anim-placeholder-wrap">
+                                    <span class="placeholder bottom">Должность</span><input class="search anim-placeholder disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" disabled="" type="text" data-bind="value: UserRole" maxlength="1000" placeholder="Должность" title="" />
+                                </div>
+                                <!-- ko if: IsPowerOfAttorneyRequired() --><!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-section form-section-wide w50p">
+                    <div class="local accordion">
+                        <div class="accordion_toggle">
+                            <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Организация
+                        </div>
+                        <div class="accordion_body initial-open">
+                            <div class="anim-placeholder-wrap">
+                                <span class="placeholder bottom">Наименование организации</span><input class="search anim-placeholder required disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" type="text" data-bind="value: OrganizationName" placeholder="Наименование организации" title="" disabled="" />
+                            </div>
+                            <div class="anim-placeholder-wrap">
+                                <span class="placeholder bottom">ИНН</span><input id="Inn" class="search required anim-placeholder disabled-when-not-new" type="text" data-bind="value: Inn, attr: {maxlength: innLength()}" placeholder="ИНН" title="" maxlength="10" disabled="" />
+                            </div>
+                            <div class="anim-placeholder-wrap" data-bind="visible: !IsIndividualEntrepreneur()">
+                                <span class="placeholder bottom">КПП</span><input class="search required anim-placeholder disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" type="text" data-bind="value: Kpp" maxlength="9" placeholder="КПП" title="" disabled="" />
+                            </div>
+
+                            <div class="anim-placeholder-wrap">
+                                <span class="placeholder bottom">ОГРН</span><input id="Ogrn" class="search anim-placeholder disabled-when-not-new" type="text" data-bind="value: Ogrn, attr: {placeholder: placeHolderNameForOgrn(), maxlength: ogrnLength()}" title="" placeholder="ОГРН" maxlength="13" disabled="" />
+                            </div>
+                            <div class="anim-placeholder-wrap" data-bind="visible: !IsIndividualEntrepreneur()">
+                                <span class="placeholder bottom">ОКОПФ</span><span tabindex="-1" role="presentation" class="k-widget k-autocomplete k-header search required anim-placeholder disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process k-state-default" style=""><input id="autocomplete" class="search required anim-placeholder disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process k-input" data-bind="value: OkopfText, valueUpdate: 'keyup'" placeholder="ОКОПФ" title="" data-role="autocomplete" type="text" autocomplete="off" role="textbox" aria-haspopup="true" aria-disabled="false" aria-readonly="false" aria-owns="autocomplete_listbox" aria-autocomplete="list" disabled="" style="width: 100%;" /><span class="k-icon k-loading" style="display:none"></span></span>
+                            </div>
+                            <div class="anim-placeholder-wrap" data-bind="visible: !IsIndividualEntrepreneur()">
+                                <button type="button" id="tree-view-btn" class="tree-view-btn disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" title="" data-bind="click: callTreeViewWindow" disabled="">
+                                    <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="anim-placeholder-wrap">
+                                <label>Юридический адрес:</label>
+                                <!--ko if: Id() || isCertificateSelected()--><!--/ko-->
+                            </div>
+                            <div class="anim-placeholder-wrap">
+                                <span class="placeholder bottom">Телефон</span><input class="search anim-placeholder disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" type="text" data-bind="value: OrganizationPhone" placeholder="Телефон" title="" disabled="" />
+                            </div>
+                            <div class="anim-placeholder-wrap">
+                                <span class="placeholder bottom">Адрес электронной почты</span><input class="search anim-placeholder required disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" type="text" data-bind="value: Email" placeholder="Адрес электронной почты" title="" disabled="" />
+                            </div>
+                            <input data-bind="value: HasAnyReportInProcess" data-val="true" data-val-required="Требуется поле HasAnyReportInProcess." id="HasAnyReportInProcess" name="HasAnyReportInProcess" type="hidden" value="false" />
+                            <input data-bind="value: State" data-val="true" data-val-required="Требуется поле State." id="State" name="State" type="hidden" value="0" />
+                            <input data-bind="value: AddressJson" id="AddressJson" name="AddressJson" type="hidden" value="" />
+                        </div>
+                    </div>
+                    <div class="anim-placeholder-wrap clear">
+                        <button type="button" class="btn btn-add-certificate disabled float-left" disabled="disabled">
+                            <i class="lnr lnr-cross" aria-hidden="true"></i>
+                            Добавить дополнительные сертификаты
+                        </button>
+                        <i class="edo edo-exclamation info"><span>При необходимости можно добавить несколько сертификатов уполномоченных сотрудников. <br /><strong>Внимание!</strong> Для предоставления документов в налоговый орган (при расчете вычета по НДС) количество и состав сертификатов дожен быть согласован с ФНС</span></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="classic accordion">
+            <i class="lnr lnr-circle-minus accordion_little-toggler" aria-hidden="true"></i>
+            <div class="accordion_toggle">
+                <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Банковские реквизиты
+            </div>
+            <div class="accordion_body initial-open">
+                <div class="form-section form-section-wide w50p">
+                    <div class="anim-placeholder-wrap margin0">
+                        <span class="placeholder bottom">БИК</span><input id="bik" class="anim-placeholder required suggestions-input" data-bind="value: Bik" maxlength="9" type="text" placeholder="БИК" title="Заполните БИК" data-orig-title="" autocomplete="off" style="box-sizing: border-box;" /><div class="suggestions-wrapper"><span class="suggestions-addon" data-addon-type="spinner" style="left: -27px; top: 1px; height: 26px; width: 26px;"></span><ul class="suggestions-constraints" style="left: -687px; top: 14px;"></ul><div class="suggestions-suggestions" style="position: absolute; display: none; left: -698px; top: 27px; width: 698px;"></div></div>
+                    </div>
+                    <div class="anim-placeholder-wrap">
+                        <span class="placeholder bottom">Р/счет</span><input id="CheckingAccount" class="anim-placeholder required" data-bind="value: CheckingAccount" type="text" placeholder="Р/счет" title="Заполните Р/счет" data-orig-title="" />
+                    </div>
+                    <div class="anim-placeholder-wrap">
+                        <span class="placeholder bottom">К/счет</span><input id="OtherAccount" class="anim-placeholder" data-bind="value: OtherAccount, valueUpdate: 'keyup' " type="text" placeholder="К/счет" />
+                    </div>
+                    <div class="anim-placeholder-wrap">
+                        <span class="placeholder bottom">undefined</span><a class="anim-placeholder btn" data-bind="click: addBankDetails">Добавить банковские реквизиты</a>
+                    </div>
+                </div>
+                <div class="form-section form-section-wide w50p">
+                    <div class="k-grid">
+                        <table>
+                            <caption class="pb10 pt10 required error" data-bind="value: BankDetails" title="Пожалуйста, заполните это поле." data-orig-title="">Банковские реквизиты</caption> 
+                            <thead class="k-grid-header">
+                                <tr>
+                                    <th class="k-header w100px">БИК</th>
+                                    <th class="k-header">Р/счёт</th>
+                                    <th class="k-header">К/счёт</th>
+                                    <th class="k-header">Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- ko foreach: BankDetails() --><!-- /ko -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="classic accordion">
+            <i class="lnr lnr-circle-minus accordion_little-toggler" aria-hidden="true"></i>
+            <div class="accordion_toggle">
+                <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Подключаемые сервисы FINTENDER-EDS
+            </div>
+            <div class="accordion_body initial-open padding0">
+                <div class="form-section form-section-wide w50p">
+                    <div class="classic accordion mt0 mb0">
+                        <i class="lnr lnr-circle-minus accordion_little-toggler" aria-hidden="true"></i>
+                        <div class="accordion_toggle">
+                            <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Сервис FINTENDER-EDS Обмен документами
+                        </div>
+                        <div class="accordion_body initial-open">
+                            <div class="form-section form-section-wide">
+                                <div class="table">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <label>
+                                                <input id="addFtExchangeChbx" class="checked-validation disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" type="checkbox" data-bind="checked: IsEnabledExchangeDocument" title="" disabled="" />
+                                                <label for="addFtExchangeChbx">Подключить сервис FT Обмен документами</label>
+                                            </label>
+                                            <!--ko if: Model.IsEnabledExchangeAddInfoVisible()--><!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table font10px">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <label>
+                                                Присоединяюсь к условиям <a href="#" class="bold" data-bind="click: loadDocumentForPreview" data-code="1">Лицензионного договора</a> по использованию полной версии ПО для ЭВМ: "Fintender EDS" для целей обмена документами в электронном виде
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion_body initial-open padding0">
+                <div class="form-section form-section-wide w50p">
+                    <div class="classic accordion mt0 mb0">
+                        <i class="lnr lnr-circle-minus accordion_little-toggler" aria-hidden="true"></i>
+                        <div class="accordion_toggle">
+                            <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Сервис FINTENDER-EDS Обмен документами (ПИК ЕАСУЗ)
+                        </div>
+                        <div class="accordion_body initial-open">
+                            <div class="form-section form-section-wide">
+                                <div class="table">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <label>
+                                                <input id="ftExchangePikChbx" class="checked-validation disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" type="checkbox" data-bind="checked: IsEnabledLimitedExchangeDocument" title="" disabled="" />
+                                                <label for="ftExchangePikChbx">Подключить сервис FT Обмен документами, совершаемый в рамках Портала исполнения контрактов Московской области Единой автоматизированной системы управления закупками Московской области (ПИК ЕАСУЗ)</label>
+                                            </label>
+                                            <!--ko if: Model.IsEnabledLimitedExchangeAddInfoVisible()--><!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table font10px">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <label>
+                                                Присоединяюсь к условиям <a href="#" class="bold" data-bind="click: loadDocumentForPreview" data-code="2">Лицензионного договора</a> по использованию ограниченной версии ПО для ЭВМ: "Fintender EDS" для целей обмена электронными документами, совершаемого в рамках Портала исполнения контрактов Московской области Единой автоматизированной системы управления закупками Московской области (ПИК ЕАСУЗ)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion_body initial-open padding0">
+                <div class="form-section form-section-wide w50p">
+                    <div class="classic accordion mt0">
+                        <i class="lnr lnr-circle-minus accordion_little-toggler" aria-hidden="true"></i>
+                        <div class="accordion_toggle">
+                            <i class="lnr lnr-circle-minus" aria-hidden="true"></i>Сервис FINTENDER-EDS Отчетность
+                        </div>
+                        <div class="accordion_body initial-open">
+                            <div class="form-section form-section-wide">
+                                <div class="fGrid fGrid__1of2">
+
+                                </div>
+                                <div class="table">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <input id="fnsChbx" type="checkbox" class="checked-validation disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" data-bind="checked: IsFnsEnabled" title="" disabled="" />
+                                            <label for="fnsChbx">ФНС</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" data-bind="visible: IsFnsEnabled" style="display: none;">
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap margin0 inline-block" style="min-width: 250px;">
+                                                <span class="placeholder bottom">ФНС: код налоговой инспекции</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" disabled="disabled" type="text" data-bind="value: DraftFnsCode, enable: IsFnsEnabled()" maxlength="4" placeholder="ФНС: код налоговой инспекции" title="" />
+                                            </div>
+                                            <div class="anim-placeholder-wrap margin0 inline-block">
+                                                <span class="placeholder bottom">ФНС: КПП</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" disabled="disabled" type="text" data-bind="value: DraftKpp, enable: IsFnsEnabled() &amp;&amp; !IsIndividualEntrepreneur()" maxlength="9" placeholder="ФНС: КПП" title="" />
+                                            </div>
+                                            <button class="btn disabled-when-organization-has-any-report-in-process" data-bind="click: addFnsDepartmentRoute, enable: addFnsDepartmentRouteEnabled()">Добавить маршрут</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" data-bind="visible: IsFnsEnabled" style="display: none;">
+                                        <div class="cell">
+                                            <div class="form-section form-section-wide margin0 padding0">
+                                                <div class="k-grid">
+                                                    <table>
+                                                        <caption class="pb10 pt10 fa-sm" required="" data-bind="value: FnsCode" title="">Маршруты отправки отчетности в ФНС</caption> 
+                                                        <thead class="k-grid-header">
+                                                            <tr>
+                                                                <th class="k-header w100px">№</th>
+                                                                <th class="k-header">Код налоговой инспекции</th>
+                                                                <th class="k-header">КПП</th>
+                                                                <th class="k-header">Действия</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- ko foreach: FnsDepartmentRoutes() --><!-- /ko -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <input id="rosstatChbx" type="checkbox" class="checked-validation disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" data-bind="checked: IsRosstatEnabled" title="" disabled="" />
+                                            <label for="rosstatChbx">Росстат</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" data-bind="visible: IsRosstatEnabled" style="display: none;">
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap margin0">
+                                                <span class="placeholder bottom">Код ТОГС</span><select class="anim-placeholder required disabled-when-organization-has-any-report-in-process" data-bind="value: RosstatCodeValueFromSelect, enable: IsRosstatEnabled(), options: RosstatCodesForSelect, optionsValue: 'DepartmentCode', optionsText: function(item){return item.DepartmentCode + ': ' + item.DepartmentName}, optionsCaption: ' - Выберите код ТОГС - '" placeholder="Код ТОГС" title="" disabled=""><option value=""> - Выберите код ТОГС - </option><option value="92-00">92-00: Росстат</option><option value="33-22">33-22: Росстат</option><option value="00-00">00-00: Росстат</option></select>
+                                            </div>
+                                        </div>
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap margin0">
+                                                <span class="placeholder bottom">ОКПО</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" type="text" placeholder="ОКПО" data-bind="value: OkpoCode, enable: IsRosstatEnabled(), attr: {maxlength: okpoLength()}" title="" disabled="" maxlength="8" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <input id="fssChbx" type="checkbox" class="checked-validation disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" data-bind="checked: IsFssEnabled" title="" disabled="" />
+                                            <label for="fssChbx">ФСС</label>
+                                        </div>
+                                    </div>
+                                    <div class="row" data-bind="visible: IsFssEnabled" style="display: none;">
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap margin0">
+                                                <span class="placeholder bottom">Код подчиненности</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" type="text" data-bind="value: FssCode, enable: IsFssEnabled()" maxlength="5" placeholder="Код подчиненности" title="" disabled="" />
+                                            </div>
+                                        </div>
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap margin0">
+                                                <span class="placeholder bottom">Регистрационный № страхователя ФСС</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" type="text" data-bind="value: FssRegCode, enable: IsFssEnabled()" maxlength="10" placeholder="Регистрационный № страхователя ФСС" title="" disabled="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table hidden">
+                                    <div class="row">
+                                        <label class="disabled">
+                                            <input id="pfrChbx" type="checkbox" disabled="" class="disabled checked-validation disabled-when-certificate-not-selected disabled-when-organization-has-any-report-in-process" data-bind="checked: IsPfrEnabled" title="" />
+                                            <label for="pfrChbx">ПФР</label>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap">
+                                                <select class="required disabled-when-organization-has-any-report-in-process" data-bind="value: PfrCodeValueFromSelect, enable: IsPfrEnabled(), options: PfrCodesForSelect, optionsValue: 'DepartmentCode', optionsText: function(item){return item.DepartmentCode + ': ' + item.DepartmentName}, optionsCaption: ' - Выберите код ПФР - '" placeholder="Код ПФР" title="" disabled=""><option value=""> - Выберите код ПФР - </option><option value="123-456">123-456: ПФР</option><option value="323-543">323-543: ПФР</option><option value="1234567">1234567: ПФР</option><option value="4323113">4323113: ПФР</option><option value="7654321">7654321: ПФР</option><option value="1235467">1235467: ПФР</option><option value="7896541">7896541: ПФР</option></select>
+                                            </div>
+                                        </div>
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap">
+                                                <span class="placeholder bottom">Регистрационный № страхователя ПФР</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" type="text" placeholder="Регистрационный № страхователя ПФР" data-bind="value: PfrRegCode, enable: IsPfrEnabled()" title="" disabled="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap">
+                                                <span class="placeholder bottom">Номер соглашения с ПФР</span><input class="anim-placeholder required disabled-when-organization-has-any-report-in-process" type="text" placeholder="Номер соглашения с ПФР" data-bind="value: PfrAgreementNumber, enable: IsPfrEnabled()" title="" disabled="" />
+                                            </div>
+                                        </div>
+                                        <div class="cell">
+                                            <div class="anim-placeholder-wrap">
+                                                <span class="placeholder bottom">undefined</span><span class="k-widget k-datepicker k-header datepicker anim-placeholder required disabled-when-organization-has-any-report-in-process" style=""><span class="k-picker-wrap k-state-disabled"><span class="placeholder bottom">Дата соглашения с ПФР</span><input id="datepicker" maskabledp="PfrAgreementDate" class="datepicker anim-placeholder required disabled-when-organization-has-any-report-in-process k-input" type="text" placeholder="Дата соглашения с ПФР" data-bind="value: PfrAgreementDate, enable: IsPfrEnabled()" title="" disabled="disabled" data-role="datepicker" role="combobox" aria-expanded="false" aria-owns="datepicker_dateview" aria-disabled="true" aria-readonly="false" style="width: 100%;" /><span unselectable="on" class="k-select" role="button" aria-controls="datepicker_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table font10px">
+                                    <div class="row">
+                                        <div class="cell">
+                                            <label>
+                                                Присоединяюсь к условиям <a href="#" class="bold" data-bind="click: loadDocumentForPreview" data-code="3">Лицензионного договора</a> по использованию полной версии ПО для ЭВМ: "Fintender EDS" для целей подачи отчётности
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-section-footer">
+
+            <div class="signinButton">
+                <button type="submit" class="btn single-btn" data-bind="click: submitData, enable: isModelDirty">Подписать и отправить заявку</button>
+                <a href="/Organization" class="btn single-btn plain">Отмена</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="wrapper">
+                <hr />
+                <p>© 2017 ООО "Финтендер-крипто"</p>
+            </div>
+        </footer>
+</div>
+<div id="notification" data-role="notification" style="display: none;"></div>
+
+<div class="fix-scroll">
+    
+</div>
+<div style="display: none;">
+    <div id="confirm-dialog">
+        <div>
+            <div class="question">Вы уверенны, что хотите продолжить?</div>
+            <div class="btn single-btn" id="action">Да</div>
+            <a role="button" id="confirm-close" href="#" class="btn plain single-btn">Отмена</a>
+        </div>
+    </div>
+    <div id="yesno-dialog">
+        <div>
+            <div class="question">Вы уверенны, что хотите продолжить?</div>
+            <div class="btn btn-action-yes">Да</div>
+            <div class="btn button btn-action-no">Нет</div>
+        </div>
+    </div>
+    <div id="continuecancel-dialog">
+        <div>
+            <div class="question"></div>
+            <div class="btn btn-action-continue">Продолжить</div>
+            <div class="btn button btn-action-cancel">Отмена</div>
+        </div>
+    </div>
+</div>
+
+    <script src="/bundles/FileUploader?v=N6SH1auDL3rN0vZQw78pMRI8zdz-rA1sfoZrYOFdJWg1"></script>
+
+    <script src="/bundles/operateOrganizationVM?v=juSLWQhFFRYbxOSIFrakxWUqX2VVSe3CPUvKmgHbdeM1"></script><script type="text/html" id="fileUploaderDefaultTemplate">
+    &lt;div&gt;
+        &lt;!-- ko if: customTemplateName() --&gt;
+        &lt;!-- ko template: {name: customTemplateName(), data: $data}  --&gt;
+        &lt;!-- /ko --&gt;
+        &lt;!-- /ko --&gt;
+        &lt;!-- ko if: !customTemplateName() --&gt;
+        &lt;div class="anim-placeholder-wrap"&gt;
+            &lt;input class="search anim-placeholder upload required" type-text="" readonly="" data-bind="attr: {placeholder: placeholder, value: countFiles}"&gt;
+        &lt;/div&gt;
+        &lt;div class="btn-fileupload"&gt;
+            &lt;label for="file-upload" class="btn"&gt;
+                &lt;i class="lnr lnr-upload" aria-hidden="true"&gt;&lt;/i&gt;Выберите файл
+            &lt;/label&gt;
+            &lt;input id="file-upload" class="fileupload" type="file" data-bind="id: elementId, attr: {multiple: !singleFileOnly, accept: accept}, event:{change: fileSelect}"&gt;
+        &lt;/div&gt;
+        &lt;ul data-bind="foreach: fileList"&gt;
+            &lt;li&gt;
+                &lt;span data-bind="text: Name"&gt;&lt;/span&gt;
+                &lt;span class="k-icon k-i-close" data-bind="event:{click: $parent.deleteFile}"&gt;&lt;/span&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;!-- /ko --&gt;
+    &lt;/div&gt;
+</script><script type="text/template" id="fileUploaderDuplicateTemplate">
+    &lt;div class=''&gt;
+        &lt;div class="text-center font110"&gt;Файл с таким наименованием уже был прикреплен.&lt;/div&gt;
+        &lt;div class="btn-group text-center"&gt;
+            &lt;button class='btn cancelModalWindow confirm_width'&gt;Ок&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</script><script type="text/template" id="power-of-attorney-actions">
+    &lt;div class="anim-placeholder-wrap clear"&gt;
+        &lt;!-- ko if:  !fnsPowerOfAttorney() --&gt;
+        &lt;div class="btn-fileupload"&gt;
+            &lt;label for="file-upload-employee-document" class="inline-block btn"&gt;Загрузить информационное сообщение&lt;/label&gt;
+            &lt;input id="file-upload-employee-document" class="fileupload-employee-document" type="file" name="files[]" accept=".xml"&gt;
+        &lt;/div&gt;
+        &lt;button class="inline-block plain btn" data-bind="click: createPowerOfAttroney"&gt;Создать информационное сообщение&lt;/button&gt;
+        &lt;!-- /ko --&gt;
+        &lt;!-- ko if: fnsPowerOfAttorney() --&gt;
+        &lt;div class="list-items"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;span class="k-i-close" data-bind="click: removePowerOfAttorney"&gt;&lt;span class="fa fa-times"&gt;&lt;/span&gt;&lt;/span&gt;
+                    &lt;a data-bind="click: createPowerOfAttroney"&gt;&lt;span class="border-bottom cursor-pointer"&gt;Информационное сообщение о представительстве в ФНС (КНД 1167005)&lt;/span&gt;&lt;/a&gt;
+                    &lt;i class="fa fa-file-text ml10" aria-hidden="true" data-bind="click: loadPowerOfAttorneyForPreview"&gt;&lt;/i&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;!-- /ko --&gt;
+    &lt;/div&gt;
+</script>
+
+
+
+    <script type="text/javascript">
+        var viewModel = operateOrganizationVM;
+        var powerOfAttorneyViewModel = powerOfAttorneyVM;
+        ko.applyBindings(viewModel);
+        ko.mapping.fromJSON('{\"Id\":null,\"VersionId\":null,\"Signature\":null,\"IsDetached\":false,\"Email\":null,\"UserRole\":null,\"Name\":null,\"MiddleName\":null,\"Surname\":null,\"Inn\":null,\"Kpp2\":null,\"KppOfHeadOrganization\":null,\"Kpp\":null,\"Snils\":null,\"Ogrn\":null,\"OkopfId\":-1,\"OkopfText\":null,\"CertThumbprint\":null,\"OrganizationName\":null,\"IsJudicialPerson\":false,\"IsIndividualEntrepreneur\":false,\"IsPhysicalPerson\":false,\"IsPowerOfAttorneyRequired\":false,\"IsAuthorizedRepresentative\":false,\"State\":0,\"StateDescription\":null,\"RequestType\":0,\"RequestState\":0,\"FullName\":null,\"Role\":null,\"UserName\":null,\"UserMiddleName\":null,\"UserSurname\":null,\"OrganizationAddress\":null,\"Address\":{\"Index\":null,\"RegionCode\":null,\"District\":null,\"City\":null,\"Locality\":null,\"Street\":null,\"House\":null,\"Block\":null,\"Flat\":null},\"AddressJson\":null,\"OrganizationPhone\":null,\"BankDetails\":null,\"IsEnabledExchangeDocument\":false,\"IsEnabledLimitedExchangeDocument\":false,\"IfnsCode\":null,\"AgreeWithExchangeShareData\":false,\"IsFnsEnabled\":false,\"IsPfrEnabled\":false,\"IsRosstatEnabled\":false,\"IsFssEnabled\":false,\"FnsCode\":null,\"SignatureHolderName\":null,\"CertificateUserRole\":null,\"CommonName\":null,\"CertIssuer\":null,\"HasAnyReportInProcess\":false,\"PfrCode\":null,\"PfrRegCode\":null,\"PfrAgreementNumber\":null,\"PfrAgreementDate\":null,\"RosstatCode\":null,\"OkpoCode\":null,\"FssCode\":null,\"FssRegCode\":null,\"CanEdit\":false,\"FnsDepartmentRoutes\":null}', {}, viewModel.Model);
+        $(document).ready(function() {
+            viewModel.init();
+            powerOfAttorneyViewModel.init();
+        });
+    </script>
+
+<script src="/Scripts/CryptoPro?v=6OuJ67zAKNCei5CyjG244OMQbSS5zX1v_nLp7wERUiM1"></script>
+<script src="/Scripts/CertificateList?v=Wd8e2yLwuMPNhALozWKH5O3g1mJhDUnv-ImAKBOL2gY1"></script>
+<script type="text/javascript">
+
+            
+                var updateNotificationCount = function () {
+                    ajaxHelpers.sendRequest(window.resourceObject.urls.webApiGetUnreadNotificationsCountForUser, "GET", "url=" + encodeURIComponent(window.location.pathname))
+                    .done(function (data) {
+                        $('.unread_notification_span').text(data.UnreadCount);
+                        if (data.Messages &amp;&amp; data.Messages.length &gt; 0) {
+                            $.each(data.Messages,
+                            function (i, message) {
+                                var type;
+                                switch (message.Severity) {
+                                case 1:
+                                    type = "warning";
+                                    break;
+                                case 2:
+                                    type = "error";
+                                    break;
+                                default:
+                                    type = "info";
+                                    break;
+                                }
+                                kendoHelpers.showNotification(type, message.MessageHtml, message.NotificationId);
+                            });
+                        }
+                    });
+                };
+
+                var updateRegistryCount = function () {
+                    var organizationId = $.cookie(window.resourceObject.consts.selectedServicedOrganizationIdCoockieName);
+                    if (organizationId){
+                        ajaxHelpers.sendRequest(window.resourceObject.urls.webApiGetCountUnviewedRegistryUrl.replace("organizationId", organizationId),"GET")
+                            .done(function(data) {
+                                $('.unviewed_registry_span').text(data);
+                            });
+                    }
+                };
+                $(document).ready(function () {
+                    updateNotificationCount();
+                    updateRegistryCount();
+                });
+                $(document).on('notificationHasBeenAdded', function () {
+                    updateNotificationCount();
+                });
+                $(document).on('notificationHasBeenRead', function () {
+                    updateNotificationCount();
+                });
+                $(document).on('countUnviewedRegistryHasBeenChanged', function () {
+                    updateRegistryCount();
+                });
+        
+</script>
+
+<script type="text/x-kendo-template" id="uniqueConfirmTextWindowTemplate">
+    &lt;div class="confirm-window"&gt;
+        &lt;div&gt;
+            &lt;div class="question" data-bind="text: question"&gt;&lt;/div&gt;
+            &lt;button class="btn" data-bind="click: confirmAction"&gt;Да&lt;/button&gt;
+            &lt;button class="btn" data-bind="click: cancelAction"&gt;Отмена&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</script>
+<script type="text/x-kendo-template" id="infoWindowTemplate">
+    &lt;div class="confirm-window"&gt;
+        &lt;div&gt;
+            &lt;div class="question" data-bind="html: message"&gt;&lt;/div&gt;
+            &lt;button class="btn" data-bind="click: confirmAction"&gt;OK&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</script>
+<script type="text/x-kendo-template" id="doubleActionWindowTemplate">
+    &lt;div&gt;
+        &lt;div class="bold font110 text-center" data-bind="text: message"&gt;&lt;/div&gt;
+        &lt;div class="btn-group text-center"&gt;
+            &lt;button class="btn single-btn" data-bind="text: leftTitle, click: leftCallback"&gt;&lt;/button&gt;
+            &lt;button class="btn single-btn plain" data-bind="text: rightTitle, click: rightCallback"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</script>
+<script type="text/javascript">
+    //TODO: создать js объект для подписи 
+    //объект для подписания - текущая дата
+    window
+        .dateDateForSign =
+        "MTAvMjcvMjAxNyAxMzozNzo1MQ==";
+</script>
+
+
+<div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" id="datepicker_dateview" data-role="popup" style="display: none; position: absolute;"></div><div id="loading"></div><div class="k-list-container k-popup k-group k-reset" id="autocomplete-list" data-role="popup" style="display: none; position: absolute;"><div class="k-virtual-wrap"><div class="k-group-header"></div><div unselectable="on" class="k-virtual-content"><ul unselectable="on" class="k-list k-reset k-virtual-list" tabindex="-1" aria-hidden="true" id="autocomplete_listbox" aria-live="polite" data-role="virtuallist" role="listbox"></ul></div></div></div><script type="text/template" id="serviced-organizations-control">
+    &lt;% if(organizations.length &gt; 0) { %&gt;
+    &lt;span class="organization-type-btn"&gt;
+        &lt;span class="inline-block"&gt;
+            &lt;span class="block"&gt;
+                &lt;span class="nameOrganization"&gt;Обслуживаемая организация не выбрана&lt;/span&gt;
+                &lt;span class="infoOrganization"&gt;&lt;/span&gt;
+            &lt;/span&gt;
+            &lt;span class="block text-right"&gt;
+                &lt;span class="employeeName" data-bind="text: $data.userName"&gt;&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/span&gt;
+        &lt;i class="lnr lnr-cog"&gt;&lt;/i&gt;
+    &lt;/span&gt;
+    &lt;div class="organizations-list"&gt;
+        &lt;%
+        for(var org in organizations) {
+        var cssClassName = "";
+        if(organizations[org].Id == selectedOrganizationId) {
+        cssClassName = "selected";
+        }
+        var orgId = organizations[org].Id;
+        var innText = "ИНН:" + organizations[org].Inn;
+        var kppText = "";
+        if(organizations[org].Kpp !== null &amp;&amp; organizations[org].Kpp !== '' &amp;&amp; organizations[org].Kpp !== undefined) {
+        kppText = " КПП:" + organizations[org].Kpp
+        }
+        var orgNameTxt = organizations[org].Name;
+        var innkppText = "(" + innText + kppText + ")";
+        %&gt;
+        &lt;span class="organization &lt;%= cssClassName %&gt;" data-orgid="&lt;%= orgId %&gt;"&gt;
+            &lt;span&gt;&lt;%= orgNameTxt %&gt;&lt;/span&gt;
+            &lt;span&gt;&lt;%= innkppText %&gt;&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;% } %&gt;
+    &lt;/div&gt;
+    &lt;% } else { %&gt;
+    &lt;span class="organization-type-none"&gt;У вас нет обслуживаемых организаций&lt;/span&gt;
+    &lt;% } %&gt;
+</script>
+<script type="text/template" id="select-certificate">
+    &lt;div class="сertificate-list-window"&gt;
+        &lt;form&gt;
+            &lt;div class="relative"&gt;&lt;div id="notification-wrap"&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class="table-sertlist-wrap"&gt;
+                &lt;table class="table-sertlist" id="certlist"&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Наименование&lt;/th&gt;
+                        &lt;th&gt;Организация&lt;/th&gt;
+                        &lt;th&gt;Срок действия&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;             
+            &lt;div&gt;
+                &lt;input type="submit" id="selectSignin" class="select-button btn" value="Выбрать сертификат" disabled="disabled" /&gt;
+                &lt;button type="button" class="btn plain cancelModalWindow"&gt;Отмена&lt;/button&gt;
+                &lt;input id="show-noatactive-certs" type="checkbox" value="Показывать неактивные сертификаты" /&gt;&lt;label for="show-noatactive-certs"&gt;Показывать неактивные сертификаты&lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+</script><div class="k-overlay" style="display: block; z-index: 10002; opacity: 0.5;"></div><div class="k-widget k-window k-state-focused" data-role="draggable" style="padding-top: 35px; min-width: 90px; min-height: 50px; width: 600px; display: block; top: 375px; left: 651.5px; position: fixed; touch-action: pan-y; max-height: 630px; z-index: 10003; opacity: 1; transform: scale(1);"><div class="k-window-titlebar k-header" style="margin-top: -35px;"> <span class="k-window-title">Выбор сертификата</span><div class="k-window-actions"><a role="button" href="#" class="k-window-action k-link"><span role="presentation" class="k-icon k-i-close">Close</span></a></div></div><div class="сertificate-list-window k-window-content k-content" data-role="window" tabindex="0" style="max-height: 630px;">
+        <form>
+            <div class="relative"><div id="notification-wrap"></div></div>
+            <div class="table-sertlist-wrap">
+                <table class="table-sertlist" id="certlist">
+                    <tbody><tr>
+                        <th>Наименование</th>
+                        <th>Организация</th>
+                        <th>Срок действия</th>
+                    </tr>
+                <tr style="" data-isvalid="true" data-hash="FF20571497C14DD3C32B3CB8B6A7451E12BF2E14"><td>AS Шен Мехмет</td><td>AS</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="046255290B0EB1CDD1797D9AB8C81F699E3687F3"><td>CRYPTO-PRO Test Center 2</td><td>CRYPTO-PRO LLC</td><td>05.08.2014 - 05.08.2019</td></tr><tr style="" data-isvalid="true" data-hash="53F3ACACA3FE489AA87F6BBAB82FA8ED0C97A46B"><td>Cбакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="79311C56D599F83D6A638246E7E2B1052DC1872B"><td>Cбакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="4A95DC79E7CAA3FCD10C999AABBE211D7885CA60"><td>Eбакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="B3DA0EFD8000033BAE311508AFB212F0CE008478"><td>Eбакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="89D5648567AFFF4362AFEE9FAE0DE69B16E9CAA4"><td>Eбакумов Петр Кузьмич</td><td>ООО Силуэт</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="D74372CAE4F8E1B4135191AD54C0366597EAEB2C"><td>FT crypto </td><td>ООО Финтендер-крипто</td><td>24.06.2016 - 24.06.2026</td></tr><tr style="" data-isvalid="true" data-hash="08EBE4485774785405B26B60C95D93AB8D5DC073"><td>v.poletaeva  </td><td>v.poletaeva@solarl.ru</td><td>27.10.2017 - 27.10.2017</td></tr><tr style="" data-isvalid="true" data-hash="C6E1D054272E3F8699037041C4FEFAD7746544E6"><td>АДебитор Аркадий Сергеевич</td><td>Дебитор</td><td>12.09.2017 - 12.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="E49627071EE824B614402F7B07240F7B9D72D930"><td>АКредитор Ильгиз Мингазович</td><td>Кредитор</td><td>12.09.2017 - 12.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="59A724224F1B042CAD43DC63808CB54189014A23"><td>АФактор Сергей Иванович</td><td>Фактор</td><td>12.09.2017 - 12.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="B8130D731A4789B936EEF4E198B47DB75FFF586D"><td>Абакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="5BF308FC39E6B8489BBB7E1676FCD5D9143C62C5"><td>Алюминий Пограничный </td><td>"Русал Красноярск</td><td>31.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="76D5070BE589B555D1C85E336BA0494149385B45"><td>Арефьева Людмила Петровна</td><td>Арно</td><td>06.10.2017 - 06.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="E9182DD1A8A2D6544B982A095074CFB12C629782"><td>Арскова Новый сотрудник</td><td>Силуэт</td><td>26.09.2017 - 26.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="A9C3E12E06B6444FDEEAB95F9C8330725231E5C7"><td>Базилевский Сергей Викторович</td><td>ДМ ФИРМА ООО 6865</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="7BB2F7270087634DF2A9DF965D13D6AF8A8B7F41"><td>Бакальчук Татьяна Владимировна</td><td>"Вайлдберриз</td><td>29.08.2017 - 29.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="890D4506283F5DAD52ABE8D29DCAA23D12E637DD"><td>Баклыков Сергей Геннадьевич</td><td>ОАО "САЯНОГОРСКОЕ АТП"</td><td>25.09.2017 - 25.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="D5E2BAC8A75489DCF430FF24B4007100EDC86D19"><td>Ббакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="06B257BA550F0611D44B9927F5FAB8D250067C6C"><td>Беликова Нина </td><td>0206 ИЗАП ООО 7864</td><td>24.06.2017 - 01.01.2040</td></tr><tr style="" data-isvalid="true" data-hash="4061D924BDC1C145A930D6C66E7F5866944C2517"><td>Беляев Е В</td><td>Тумар</td><td>26.09.2017 - 26.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="05448804E4B3B7D4C2D18D19411206936706411E"><td>Би Пэн </td><td>ИП Би Пэн</td><td>26.10.2017 - 26.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="A8CAB0386D7D4CB3FEB1CBBFF7F851D5C229B37D"><td>Болдырев Сергей Ефимович</td><td>"Болдырев Сергей Сергеевич</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="31F52140E16F3D88C1D3D43673410F15504B8271"><td>Болдырев Сергей Игнатьевич</td><td>"Болдырев Сергей Сергеевич</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="44F76A9F6EEC3DD47F44DE73F2941D227430B221"><td>Болдырев Сергей Пафнутиевич</td><td>"Болдырев Сергей Сергеевич</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="8190471CCBF3040016A92D302FAF482CD2EBDA46"><td>Болдырев Сергей Сергеевич</td><td>"Болдырев Сергей Сергеевич</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="647ED2A63AA099C0D882B32DFC8D6DA07FEA06D0"><td>ВЫЖАЕВА АЛЁНА ДМИТРИЕВНА</td><td>"ГУП МО ""Лабрадор"""</td><td>23.08.2017 - 23.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="200EB841643634E09021CBA4B9DFCDC36C85633C"><td>Валинецкий Вадим Владимирович</td><td>ООО Финтендер-крипто</td><td>27.10.2017 - 27.10.2018</td></tr><tr style="" data-isvalid="true" data-hash="87FBAF04F1A3551095D6FD63B5D6AAC17CFA7699"><td>Воскерчян Парман </td><td>"Филипс</td><td>22.08.2017 - 22.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="BF513C13B46BB7AACA73FDBD84545638402730F3"><td>Вшш Новый </td><td>Фирма</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="46C5C909F321B9A50BE748A4D8867FA58C7218CE"><td>Галумян Рафаель Дмитрович</td><td>"Галумян Рафаель Дмитрович</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="67D6C2CAEA12FE1AE51BF8114B9DEC10A5499C4A"><td>Галумян Рафаель Углович</td><td>"Галумян Рафаель Дмитрович</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="54B8799B8ADEE3F82BA7A8C5B531BC289B52AFBF"><td>Глухов Виктор Владимирович</td><td>ИП Глухов Виктор Владимирович</td><td>17.05.2017 - 17.05.2018</td></tr><tr style="" data-isvalid="true" data-hash="CC954F9EAF43D44A1620B1437B763B7C64AFC56D"><td>Глухов Виктор Владимирович</td><td>Глухов Виктор Владимирович</td><td>27.10.2017 - 27.10.2018</td></tr><tr style="display:none" data-isvalid="false" data-hash="7508B0567AF2749546A100EEC8D1DE56CDA66D84"><td>Головатый Андрей Владимирович</td><td>"Головатый Андрей Владимирович</td><td>21.07.2017 - 21.10.2017 (Неактивный)</td></tr><tr style="" data-isvalid="true" data-hash="3149DC6C1233D1EEABF1AC5F5684A00A9B2D21DF"><td>Гортензия Гортензия Гортензиевна</td><td>ООО Тестеры</td><td>31.07.2017 - 31.10.2017</td></tr><tr style="" data-isvalid="true" data-hash="BA891F8BF200DED5CE7E98DFB6DBB3E69C4C498C"><td>Грачева Евгения Ивановна</td><td>Новая организация2</td><td>01.08.2017 - 01.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="AC76EEAFC466EE0E9D9AA68D696CBD9BFC568D5E"><td>Грачева Евгения Ивановна</td><td>Новая организация3</td><td>01.08.2017 - 01.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="B0437B5173BB0656FE050D2F0A79690D587F7F52"><td>Грачева Евгения Ивановна</td><td>Новая организация4</td><td>01.08.2017 - 01.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="B75F7B038BC13D108DF4CB6595BEDE81FCF8FA3A"><td>Грачева Евгения Ивановна</td><td>тест</td><td>17.05.2017 - 17.05.2018</td></tr><tr style="" data-isvalid="true" data-hash="5337B9D7DE6A03987C5B0EA5533BEA5FA37B3798"><td>Грачева Евгения Ивановна</td><td>Новая организация</td><td>01.08.2017 - 01.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="85D11FF337BC8921CC303DAF7599C6542F2CBC5B"><td>Дарси Фицульям </td><td>ООО Силуэт</td><td>28.08.2017 - 28.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="765B4327E53F76EA08A8E3303D4F238100C7A3B6"><td>Дбакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="8C881E8C7B8F30B02B79B444B6E190A670FC0F14"><td>Деньги Василий Васильевич</td><td>Арно</td><td>06.10.2017 - 06.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="C6232ECA0BEA5057A96BC92BD5E0CF037D3E4D64"><td>Деньги много </td><td>Арно</td><td>06.10.2017 - 06.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="EDB0EA50FA62CB2B64F271DDD75C0778F5C0510C"><td>Деньгуб Василий Денисович</td><td>"СП ""Чапаевское""</td><td>28.07.2017 - 28.10.2017</td></tr><tr style="" data-isvalid="true" data-hash="8BA3D547B287D482445246D71C3A83D948086964"><td>Дмитрович Оксана Васильевна</td><td>"Дмитрович Оксана Васильевна</td><td>30.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="961985E3CB4805E15F382169D200645DCE176EC6"><td>Долгих Александр Сергеевич</td><td>"Лайм</td><td>29.08.2017 - 29.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="6ED7BA20800EA361A3CF16B77E653A6348CC04A4"><td>Долгих Анатолий </td><td>"Ниимаш</td><td>29.08.2017 - 29.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="76DE48763783B57797A3CA74CA14E85D6DCCB898"><td>Дородных Денис Игоревич</td><td>"Дмитрогорский Мясоперерабатывающий Завод</td><td>11.09.2017 - 11.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="18F8319317FB32F23B7F9E4B6E7BCF4367651E5B"><td>Дурьев Олег Викторович</td><td>"Инвестстройфинанс</td><td>22.09.2017 - 22.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="39085A83382C294A62E7584CB8127D7EB40E260F"><td>Дюдиков Андрей Вячеславович</td><td>Тренд, АО</td><td>19.09.2017 - 19.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="B1681B726B84375A1FFE2EBFA37E3D902A30AE74"><td>Евсеев Александр Сергеевич</td><td>Тумар</td><td>26.09.2017 - 26.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="98FDF6227020BA26FCC8648DECDA074F5CFC3FDA"><td>Железо Пограничный </td><td>"Русал Красноярск</td><td>31.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="DCE680EBAC217895ECAEF2CB8B0DA86090AC6C9E"><td>Жмурка Мурка </td><td>"Вайлдберриз</td><td>01.09.2017 - 01.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="10E92EAD22088E8B4D7207DB95ACE035FF3877AB"><td>Жучка Сергей </td><td>"Жучкан</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="61DCBD58A1014FA0AC3C48F27FD5472DB023A750"><td>Жучкан Игорь Емельянович</td><td>"Жучкан</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="40ABA63B0EAC796149EF3CB6A9C246CD1D7DFCBA"><td>Захаров Новый сотрудник</td><td>Тумар</td><td>26.09.2017 - 26.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="75D850089045B9F212B854E76D722D438CCF5DB7"><td>Карелина Дарья Александровна</td><td>"ООО ""Финуниверконсалтинг"""</td><td>23.12.2016 - 23.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="FCF058A2C82003CAC8395DB1754DAA37DD481456"><td>Корниш Бой </td><td>"Пивоварня Москва-Эфес</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="6074A0828F8E1A1B808B2F838892C78842D9BF52"><td>Корниш Рой </td><td>"Пивоварня Москва-Эфес</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="9893823C24EB56F46573BD5CD4594C9823F500D1"><td>Коротаев Александр Николаевич</td><td>"Ломбард Митра</td><td>28.08.2017 - 28.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="3C2DF76DAAEE2D97DB8D1A12201B626756DC9D00"><td>Кох Янина Сергеевна</td><td>"Нафтоальянс</td><td>02.10.2017 - 02.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="7E8F44BA3670B56887AB661E8BE77608097473D4"><td>Кочегарова НЕМарина </td><td>"Сфинкс</td><td>29.08.2017 - 29.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="AC04DD1AAB568235B37A381F0AD0FCC32EDA2A30"><td>Кошечка Барс </td><td>"Евраз КГОК</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="8F428D2CE169CE44C70AF0F51914888ED29BF49C"><td>Кошечка Лев </td><td>"Хант-Маркет</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="A18F6F480CF1E9408E408FD4C84847E76014E2E2"><td>Кошечка Лигр </td><td>"Шемур</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="9A5E4E60E33B2A919A95BD2E3A7F9CD3CE4274D3"><td>Кошечка Лигр </td><td>"Шемур</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="8A0632D7659DC0A6B2128091B55C9C562673D4A1"><td>Кошечка Манул </td><td>ООО Тестеры</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="8043A25E6D3D7D4B2EA34D966C0088302072B4EC"><td>Кошечка Пантера </td><td>"Шемур</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="5B6E283DCB26035BD31F32DD443557CD34636D4D"><td>Кошечка Тигр </td><td>"СУБР</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="EB0DF96D7C2E6597566DCA8F9FBD7E6EA85D1CDB"><td>Красный Октябрь </td><td>ООО Силуэт</td><td>09.10.2017 - 09.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="3605BF071C43FC72CA6998D735FB7CF4F1F77916"><td>Крошка Енот </td><td>ООО Тестеры</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="CF284FE51CC960C01C1AA4E887D97E67C3EF42B7"><td>Крошка Картошка </td><td>"Вайлдберриз</td><td>04.09.2017 - 04.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="F4BDC0B9348BE4D508DF446F2C2D8999BA0330A4"><td>Крошка Крокодил </td><td>АО Силуэт</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="E1065F143FDD386A23BD952FB80B3420817F32FC"><td>Крошка Сергей Алексеевич</td><td>Силуэт</td><td>02.10.2017 - 02.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="2204CE6DA64B089ED7EE6997F52C4E881A1CA995"><td>Крошка Слон </td><td>ООО Тестеры</td><td>16.08.2017 - 16.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="9DEE42BB02870DDD70D96220B844074F0476697D"><td>Кузнецов Михаил Михайлович</td><td>МКК</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="9A9DC8B412273A56C1C544BAD28DD62D813497E8"><td>Кузнецов Михаил Михайлович</td><td>МКК</td><td>05.10.2017 - 05.01.2018</td></tr><tr style="display:none" data-isvalid="false" data-hash="FDA76DBD8E43CA53BE40E21423931B1CC7E0BBC7"><td>Кузнецов Михаил Михайлович</td><td>МКК</td><td>05.07.2017 - 05.10.2017 (Неактивный)</td></tr><tr style="" data-isvalid="true" data-hash="54F9E2861FDA4B45A861BA7FBCDEAA3EFD646377"><td>Куликова Арина </td><td>ООО СоларЛаб</td><td>07.08.2017 - 07.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="6F7737930C3697F0C8361F618850FBFC0D577EBA"><td>Куравский Владимир Григорьевич</td><td>ГБОУ СОШ № 1871</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="DFAE1384408DF0E2256B6C5F5582E5183E4567A7"><td>Ли Чан </td><td>"Новость</td><td>25.08.2017 - 25.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="4C97B04DB158C9794510803F62E5298DA8BA1B60"><td>Лишенков Владимир Николаевич</td><td>ООО РТС-тендер</td><td>27.10.2017 - 27.10.2018</td></tr><tr style="" data-isvalid="true" data-hash="12A09E599BE399E6DDE3ECD03928A3791B126D88"><td>Лишенков Владимир Николаевич</td><td>ООО РТС-тендер</td><td>27.10.2017 - 27.10.2018</td></tr><tr style="" data-isvalid="true" data-hash="AC452E9A81EA9366B3AC11FE66F071E92BA1C989"><td>Лупин Дмитрий </td><td>"Ланта</td><td>29.09.2017 - 29.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="F28DC351534F73DDC98AFA76E210C4DC8AB1F46D"><td>Лупин Максим Владимирович</td><td>"Ланта</td><td>29.09.2017 - 29.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="E675253DBBDC69958FF376397DC5DC4D04C7DB56"><td>Мадани Сатурн </td><td>ООО Тестеры</td><td>21.08.2017 - 21.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="3157B517E01967C03E50F0BD6E10B1E931E30CAB"><td>Мадани Уран </td><td>Деловые Линии, ООО</td><td>01.08.2017 - 01.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="699D2515ACFF42C6B6F87AA437F3CC1370DEAF86"><td>Мадани Фарид </td><td>"Проктер ЭНД Гэмбл Дистрибьюторская Компания</td><td>02.08.2017 - 02.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="F80FE359BBE4B86598DD1B9AF94C514CEB2CB1A0"><td>Мадани Фарид </td><td>"Адидас</td><td>02.08.2017 - 02.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="1589A57078121B892C9ADE5ECF06FEE80D67D235"><td>Мадани Фарид </td><td>Деловые Линии, ООО</td><td>01.08.2017 - 01.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="A295179D31A289559DDEFBDBFC34DAB7A283AE0C"><td>Мадани Фарид </td><td>"Эйвон Бьюти Продактс Компани</td><td>02.08.2017 - 02.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="80FEC4F0F0BFC40386FD3D93584650D9A32F01B7"><td>Мадани Юпитер </td><td>ООО Тестеры</td><td>21.08.2017 - 21.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="9A07497F99F15CA946F695B2C9CC53AE5010DEAB"><td>Макаров А В</td><td>МУНИЦИПАЛЬНОЕ АВТОНОМНОЕ ОБЩЕОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ "СРЕДНЯЯ ОБЩЕОБРАЗОВАТЕЛЬНАЯ ШКОЛА № 63 Г. УЛАН-УДЭ"</td><td>27.09.2017 - 27.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="38C0598864A9078B80F693E64F4AD8A9080FF7AB"><td>Махотина Галина Евгеньевна</td><td>Тень</td><td>11.09.2017 - 11.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="473C6505CA51ED5ED4509F25567903BB7361E687"><td>Мороз Александр Евгеньевич</td><td>"ТД ""Самосвальное Оборудование""</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="0067AC13647427F9FD4026BAD2B9210080435012"><td>Мосавтодор Иван Реципиент</td><td>"Государственное бюджетное учреждение Московской области ""Мосавтодор"""</td><td>04.09.2017 - 04.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="A03B8C97545AB5E7610D4918F2FD7F5B735F43F1"><td>Мышкин Лев </td><td>АО Силуэт</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="1EAD4A05E94CF410791B3B29BCFFE390804CD9CC"><td>Нафтоальянс И И</td><td>ЗАО «Нафтоальянс»</td><td>25.08.2017 - 25.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="08E06938F546EA59E2E3D2C8020C2A0336BAF4C1"><td>Нафтоальянс Михаил Михайлович</td><td>Нафоальянс</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="C8B21D6302600DC848AF9232F61B662477E2C22F"><td>Нафтоальянс Новый </td><td>ЗАО «Нафтоальянс»</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="A3274A8CD858F1932D1B128D4B87AB8E41DF320D"><td>Нефть Качаю </td><td>"Нефтетранссервис</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="1E9CB2F084DD237C0C943F7500484F31504AAE31"><td>Ногтиков Победа ООО</td><td>"Победа</td><td>31.08.2017 - 30.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="85CAC1EAEFBCE4A627D9CB57D73BA019E3760B7F"><td>Ножик Грожик Зожик</td><td>0206 ПИКЧЕР ООО 7578</td><td>15.08.2017 - 15.11.2017</td></tr><tr style="display:none" data-isvalid="false" data-hash="5FF941B2474ADC1B76223908529D423C4B3B105E"><td>Нугаев Сергей Николаевич</td><td>"ТТУ</td><td>18.07.2017 - 18.10.2017 (Неактивный)</td></tr><tr style="" data-isvalid="true" data-hash="1CB83F5B643B732A94C60884440B938F47451EC8"><td>Осипов Владимир Викторович</td><td>"СП ""Чапаевское""</td><td>28.07.2017 - 28.10.2017</td></tr><tr style="" data-isvalid="true" data-hash="AEF33BC5AE9B1BBFF538902445F6DCAF2B2113F9"><td>Ошибка И </td><td>ООО Тестеры</td><td>11.08.2017 - 11.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="EAFBF1DF70FC6407CD691547D416C0420AA28B8A"><td>ПРИЁМ ЭДО </td><td>"ФСК ЕЭС</td><td>04.10.2017 - 04.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="4ED1B850D375013619BF64ADF145DE7CDDDE5CED"><td>Партнер Иван Сендер</td><td>"Партнер</td><td>01.09.2017 - 01.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="40CA4D8E970A956530C41EDFA2FE6F76D8DCA456"><td>Пелинас Всеволод Олегович</td><td>ООО СоларЛаб</td><td>17.05.2017 - 17.05.2018</td></tr><tr style="" data-isvalid="true" data-hash="038D314DCDC87DF335AD162C1F265B8AACBE4D3E"><td>Пелипас Всеволод Олегович</td><td>ООО СоларЛаб</td><td>27.10.2017 - 27.10.2018</td></tr><tr style="" data-isvalid="true" data-hash="8DFE9B4B8D85D146E7707758AC0D9EB780253225"><td>Пендюх Николай </td><td>КАРАИДЕЛЬ (15991/5485)</td><td>09.10.2017 - 09.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="D486DE6975E183EDF2A2657B2F0C7C8142E7B65A"><td>Петров Евгений Александрович</td><td>"ООО ""ЮГЭЛЕКТРОАВТОМАТИКА"""</td><td>24.08.2017 - 24.11.2018</td></tr><tr style="" data-isvalid="true" data-hash="33E619665EE7729CB6A0467350A1480F7DE5CCBD"><td>Плюшкин Степан </td><td>"Стис-Серпухов</td><td>07.09.2017 - 07.12.2017</td></tr><tr style="display:none" data-isvalid="false" data-hash="A9FDE4CBB5BD26CC12F9BE4D5787D8382294CC72"><td>Попадюк Александр Васильевич</td><td>"Помидорчик и Огурчик</td><td>17.07.2017 - 17.10.2017 (Неактивный)</td></tr><tr style="" data-isvalid="true" data-hash="4DE703F53AC7813A5476C6763073A6FA03E2F1CC"><td>Попадюк Дмитрий </td><td>"Помидорчик и Огурчик</td><td>29.09.2017 - 29.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="D3AA0E4A29F323165D127BF3552677CA323DE201"><td>Проверка Зоя </td><td>"Аруба</td><td>23.08.2017 - 23.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="5F93D4315B18F7C89136E3F8E41A2080E895DF55"><td>Расеева Марина Николаевна</td><td>"ГК ""Кушать Надо""</td><td>28.08.2017 - 28.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="0625E1D1968EBCD241C28496FDDAD3E3C433966A"><td>Раскольников Родион Романович</td><td>"ГОСУДАРСТВЕННОЕ УНИТАРНОЕ ПРЕДПРИЯТИЕ РЕСПУБЛИКИ МАРИЙ ЭЛ ""МОСТРЕМСТРОЙ"""</td><td>24.08.2017 - 24.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="FFBF3D28EE2AA52E49ECB6A22475C3534C972A54"><td>Роза Роза Розовна</td><td>ООО Тестеры</td><td>31.07.2017 - 31.10.2017</td></tr><tr style="" data-isvalid="true" data-hash="147860A44D665DB149A1F718D0300F547CA42D42"><td>Роллан Марсель </td><td>Нестле Россия, ООО</td><td>21.08.2017 - 21.11.2017</td></tr><tr style="display:none" data-isvalid="false" data-hash="4646D558A9827FE67AB4EAE0AD9F86BFC511EBC3"><td>Рукин Александр Васильевич</td><td>"Птицефабрика Дружба</td><td>07.07.2017 - 07.10.2017 (Неактивный)</td></tr><tr style="" data-isvalid="true" data-hash="2D846B882AE4A7ABDA5E68E3450400282F936F17"><td>Ручкин Геннадий Александрович</td><td>Комп.РУ, ООО</td><td>28.09.2017 - 28.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="B4484F18CEB8A8BB8F749785D7873E653FE4D06D"><td>Ручкин Екатерина Юрьевна</td><td>Комп.РУ, ООО</td><td>28.09.2017 - 28.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="02E8D8448AC450E94B02BFB906507ECF4D0E7A2D"><td>Ручкин Сергей </td><td>Комп.РУ, ООО</td><td>28.09.2017 - 28.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="9864C363B6BB9BC558A7348DBCB2CF9CD414254B"><td>СОЯ СОЯ </td><td>"Содружество-Соя</td><td>10.08.2017 - 10.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="66BA92649121EA34F764B4D3510096ABEDA9E3D0"><td>Сбакумов Петр Кузьмич</td><td>"Новость</td><td>08.08.2017 - 08.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="95A05C3A22AC8D514CAFBD66EA092DF192CB386E"><td>Сергей Белашев </td><td>0206 УЛЬТРА-Ф 6883</td><td>05.09.2017 - 05.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="308293D084B10FE420C04C461B172414E56FF76B"><td>Сладкий Александр Леонидович</td><td>ООО "АТЛАНТ"</td><td>18.09.2017 - 18.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="A5623BB4EE0341A81A20F7C30D23F28456FFE8D8"><td>Степанов А В</td><td>"АРЕНАГО" (1 ОТД.)9584 БУХ.ДЕЛО</td><td>26.10.2017 - 26.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="369DA8E4A9F3BF527A10E7441F80AFE03E928F58"><td>Степуро Сергей Иванович</td><td>ЗАО "ДЕЗДЕЛО"</td><td>26.10.2017 - 26.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="723EDA82B7647D39F521EB6482B71931C5D6DB10"><td>Стрельников К В</td><td>"РУССКИЙ ИНВЕСТОР" (2 ОТД.)2163</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="4D58C9CB5BBEB0BCD9147484A0F460932FF57257"><td>Тест Имя Отчество</td><td>"О-СИ-ЭС-Центр</td><td>09.08.2017 - 09.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="C9ACA96EC1294B12EA4E8A965683A298CCA4A34D"><td>Тестовый УЦ </td><td>Тестовая организация</td><td>18.10.2012 - 24.05.2045</td></tr><tr style="" data-isvalid="true" data-hash="0408435EB90E5C8796A160E69E4BFAC453435D1D"><td>УЦ 1 ИС ГУЦ</td><td>Минкомсвязь России</td><td>16.03.2016 - 12.07.2027</td></tr><tr style="" data-isvalid="true" data-hash="D775266FC7BD3BB401CD96065BE6C6820510FC83"><td>Фбакумов Петр Кузьмич</td><td>"Новость</td><td>04.09.2017 - 04.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="9E3D1D3843F47AC0D08E1D008CE787E7D8D6721F"><td>Федотов Владимир Вячеславович</td><td>AS</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="E7584B9F1255A03C9906BFB6178BBEC61D4638FC"><td>Фиалка Фиалка </td><td>ООО Тестеры</td><td>14.08.2017 - 14.11.2017</td></tr><tr style="" data-isvalid="true" data-hash="24E40C933D521773A6B32B7C91ABAF94F59FB87A"><td>Филатов Сергей Вадимович</td><td>ФИЛ КО ООО 5327</td><td>27.10.2017 - 27.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="557F195FF8A4CB0EA019DFB9C3AE2215C717AFD3"><td>Харитонов Сергей </td><td>0206 В Ч 86736</td><td>27.06.2017 - 01.01.2040</td></tr><tr style="" data-isvalid="true" data-hash="3E2C0DE53CFDB3137DC83E63BF5FEE02342D0186"><td>Черноусова Елена Владимировна</td><td>МУНИЦИПАЛЬНОЕ АВТОНОМНОЕ ОБЩЕОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ "СРЕДНЯЯ ОБЩЕОБРАЗОВАТЕЛЬНАЯ ШКОЛА № 63 Г. УЛАН-УДЭ"</td><td>27.09.2017 - 27.12.2017</td></tr><tr style="" data-isvalid="true" data-hash="6B345F1A82DCF7FDFD14FC3EF86B5E43BA5D3A22"><td>Шшш Вшш </td><td>Фирма</td><td>25.10.2017 - 25.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="697E5C4A9B2E87B2EC8EFE5533670A9B2869848C"><td>ЭДО ПРИЁМ </td><td>"ФСК ЕЭС</td><td>04.10.2017 - 04.01.2018</td></tr><tr style="" data-isvalid="true" data-hash="B46B58A884B4F131CE1AE3B5511582E8E2D03A0C"><td>Юдина Галина Федоровна</td><td>ЗАО "АПТЕКА 244"</td><td>25.10.2017 - 25.01.2018</td></tr></tbody></table>
+            </div>             
+            <div>
+                <input type="submit" id="selectSignin" class="select-button btn" value="Выбрать сертификат" disabled="disabled" />
+                <button type="button" class="btn plain cancelModalWindow">Отмена</button>
+                <input id="show-noatactive-certs" type="checkbox" value="Показывать неактивные сертификаты" /><label for="show-noatactive-certs">Показывать неактивные сертификаты</label>
+            </div>
+        </form>
+    </div><div class="k-resize-handle k-resize-n"></div><div class="k-resize-handle k-resize-e"></div><div class="k-resize-handle k-resize-s"></div><div class="k-resize-handle k-resize-w"></div><div class="k-resize-handle k-resize-se"></div><div class="k-resize-handle k-resize-sw"></div><div class="k-resize-handle k-resize-ne"></div><div class="k-resize-handle k-resize-nw"></div></div></body></html>

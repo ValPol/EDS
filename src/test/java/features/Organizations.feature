@@ -13,5 +13,7 @@ Feature: Organizations feature
 
     When I have choose Organization Tub
 
+    When I have choose Certificate
+
 
     Then I successfully reach it
