@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import DTO.LogInDTO;
+import DTO.OrganizationDTO;
 import PageObjects.LogIn.LogInPage;
 
 import PageObjects.MainLayout.TopMenuPage;
@@ -61,6 +62,13 @@ public class AddOrganization  {
     public void iHaveChooseCertificate() throws Throwable {
         addOrganization = page(OperateOrganizationPage.class);
         addOrganization.chooseCertificate(driver);
+    }
+
+    @When("^I have put all information$")
+    public void iHavePutAllInformation(DataTable table) throws Throwable {
+        OrganizationDTO dto = table.asList(OrganizationDTO.class).get(0);
+        addOrganization.setParameters(dto);
+
     }
 
 

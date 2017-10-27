@@ -1,5 +1,6 @@
 package PageObjects.Organizations;
 
+import DTO.OrganizationDTO;
 import PageObjects.MainLayout.MainLayoutPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
@@ -38,7 +39,7 @@ public class OperateOrganizationPage extends MainLayoutPage {
     @FindBy (xpath ="//*[@class='anim-placeholder btn']")
     public SelenideElement addBankDetailsButtom;
 
-    @FindBy (id = "addFtExchangeChbx")
+    @FindBy (xpath ="//*[@data-bind='checked: IsEnabledExchangeDocument']")
     public SelenideElement exchangeDocumentMainChB;
 
     @FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process error']")
@@ -49,6 +50,9 @@ public class OperateOrganizationPage extends MainLayoutPage {
 
     @FindBy (id = "fnsChbx")
     public SelenideElement fnsChBx;
+
+    @FindBy (xpath ="//*[@class='btn single-btn']")
+    public SelenideElement enterBTM;
 
     //@FindBy ( xpath ="//*[@class='anim-placeholder required disabled-when-organization-has-any-report-in-process']")
 
@@ -70,9 +74,26 @@ public class OperateOrganizationPage extends MainLayoutPage {
        $(By.xpath("//*[text()='Филатов Сергей Вадимович']")).click();
        chooseCertificate.click();
        Thread.sleep(1000);
-        Actions builder = new Actions(driver);
-        builder.sendKeys(Keys.RIGHT).perform();
-        builder.sendKeys(Keys.ENTER).perform();
+    }
+
+
+    public void setParameters(OrganizationDTO dto) throws InterruptedException {
+        bikField.setValue(dto.bik);
+        checkingAccountField.setValue(dto.checkingAccount);
+        Thread.sleep(1000);
+        addBankDetailsButtom.click();
+        Thread.sleep(1000);
+        System.out.println(exchangeDocumentMainChB.isDisplayed());
+        Thread.sleep(1000);
+        System.out.println(exchangeDocumentMainChB.isDisplayed());
+        Thread.sleep(1000);
+        System.out.println(exchangeDocumentMainChB.isDisplayed());
+        Thread.sleep(1000);
+        System.out.println(exchangeDocumentMainChB.isDisplayed());
+        Thread.sleep(1000);
+       // enterBTM.click();
+       // Thread.sleep(1000);
+      //  fnsCodeExchangeDocText.setValue(dto.fnsCodeExchangeDocText);
     }
 
 
