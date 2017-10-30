@@ -36,7 +36,7 @@ public class AddOrganization  {
 
     @Given("^I have opened EDS$")
     public void iHaveOpenedEDS() throws Throwable {
-        page = open("https://eds-pro-trunk.fintender.ru/Account/SignIn?ReturnUrl=%2FReport", LogInPage.class);
+        page = open("https://eds-pro-testing.fintender.ru/Account/SignIn?ReturnUrl=%2FReport", LogInPage.class);
     }
 
     @When("^I enter credential$")
@@ -74,6 +74,7 @@ public class AddOrganization  {
 
     @Then("^I successfully reach it$")
     public void iSuccessfullyReachIt() throws Throwable {
+       System.out.println( addOrganization.notificationAppeared());
 
     }
 }

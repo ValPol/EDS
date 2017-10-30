@@ -16,7 +16,7 @@ Feature: Organizations feature
     When I have choose Certificate
 
     When I have put all information
-      | bik       | checkingAccount                  | fnsCodeExchangeDocText  |
-      | 044525201 | 123.45.678.9.0123.4567890        | 7708                    |
+      | bik       | checkingAccount                  | fnsCodeExchangeDocText  | okpo  |
+      | 044525201 | 123.45.678.9.0123.4567890        | 7708                    | 12300 |
 
     Then I successfully reach it

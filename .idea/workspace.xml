@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1b2358c-ee57-438a-9993-a9d7f9f6eded" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/Organizations/OperateOrganizationPage.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java" afterPath="$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/PageObjects/Organizations/OperateOrganizationPage.java" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/Organizations/OperateOrganizationPage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/features/Organizations.feature" afterPath="$PROJECT_DIR$/src/test/java/features/Organizations.feature" />
@@ -33,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopMenuPage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TopMenuPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/MainLayout/TopMenuPage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -46,8 +45,8 @@
       <file leaf-file-name="Organizations.feature" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/features/Organizations.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="0">
+              <caret line="0" column="30" lean-forward="true" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -56,8 +55,8 @@
       <file leaf-file-name="AddOrganization.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="37" />
+            <state relative-caret-position="459">
+              <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperateOrganizationPage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperateOrganizationPage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/Organizations/OperateOrganizationPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="92" column="27" lean-forward="false" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
+            <state relative-caret-position="590">
+              <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,8 +89,8 @@
       <file leaf-file-name="OrganizationDTO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="119">
+              <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -183,10 +182,10 @@
         <option value="$PROJECT_DIR$/src/test/java/Common/Configurations.java" />
         <option value="$PROJECT_DIR$/src/test/java/PageObjects/MainLayout/TopMenuPage.java" />
         <option value="$PROJECT_DIR$/src/test/java/Common/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java" />
-        <option value="$PROJECT_DIR$/src/test/java/features/Organizations.feature" />
         <option value="$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java" />
+        <option value="$PROJECT_DIR$/src/test/java/features/Organizations.feature" />
         <option value="$PROJECT_DIR$/src/test/java/PageObjects/Organizations/OperateOrganizationPage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java" />
       </list>
     </option>
   </component>
@@ -197,9 +196,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1923" />
+    <option name="y" value="26" />
     <option name="width" value="1936" />
     <option name="height" value="1176" />
   </component>
@@ -218,6 +217,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,7 +281,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="PageObjects" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EDS" type="b2602c69:ProjectViewProjectNode" />
@@ -287,7 +290,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="PageObjects" type="462c0819:PsiDirectoryNode" />
-              <item name="MainLayout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EDS" type="b2602c69:ProjectViewProjectNode" />
@@ -295,8 +297,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="PageObjects" type="462c0819:PsiDirectoryNode" />
-              <item name="Organizations" type="462c0819:PsiDirectoryNode" />
+              <item name="StepDefinitions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EDS" type="b2602c69:ProjectViewProjectNode" />
@@ -317,10 +318,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,7 +366,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber java.Scenario: User should have ability create new organization">
+  <component name="RunManager" selected="Cucumber java.Feature: Organizations">
     <configuration name="Feature: LogIn" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -829,39 +826,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 17h 29m 53s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 40m 52s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 17h 40m 05s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 42m 15s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 17h 41m 29s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 44m 05s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 14m 44s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 46m 37s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 16m 35s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 50m 36s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 23m 11s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 52m 33s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 24m 14s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 54m 13s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 28m 25s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 57m 02s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 30m 28s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 10h 58m 09s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
-    <history-entry file="Scenario__User_should_have_ability_create_new_organization - 2017.10.27 at 18h 34m 23s.xml">
-      <configuration name="Scenario: User should have ability create new organization" configurationId="CucumberJavaRunConfigurationType" />
+    <history-entry file="Feature__Organizations - 2017.10.30 at 11h 01m 54s.xml">
+      <configuration name="Feature: Organizations" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="1923" y="26" width="1936" height="1176" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -872,8 +869,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32448378" sideWeight="0.7121535" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33584195" sideWeight="0.79584223" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11665099" sideWeight="0.49791667" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33584195" sideWeight="0.79584223" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -882,8 +879,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39887112" sideWeight="0.47654584" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -959,7 +956,7 @@
           <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="44" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1133,9 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1150,9 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1175,7 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,6 +1181,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1203,24 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/MainLayout/TopMenuPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Common/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1229,29 +1208,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/features/Organizations.feature">
+    <entry file="file://$PROJECT_DIR$/src/test/java/StepDefinitions/AddOrganization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/DTO/OrganizationDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="459">
+          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/Organizations/OperateOrganizationPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="92" column="27" lean-forward="false" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
+        <state relative-caret-position="590">
+          <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/features/Organizations.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="30" lean-forward="true" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/MainLayout/TopMenuPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
